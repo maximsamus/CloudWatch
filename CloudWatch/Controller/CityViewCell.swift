@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CityViewCell: UITableViewCell {
+final class CityViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

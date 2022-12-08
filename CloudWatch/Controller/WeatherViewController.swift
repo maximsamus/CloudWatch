@@ -7,11 +7,11 @@
 
 import UIKit
 
-class WeatherViewController: UITableViewController {
+final class WeatherViewController: UITableViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    let cities = [
+    private let cities = [
         "Warsaw",
         "Bucharest",
         "Martuni",
