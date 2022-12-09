@@ -9,6 +9,12 @@ import UIKit
 
 class CityCell: UITableViewCell {
 
+    @IBOutlet weak var cityViewCell: UIView!
+    @IBOutlet weak var timeLabel: UIStackView!
+    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak var weatherImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

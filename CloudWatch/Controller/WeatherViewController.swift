@@ -26,6 +26,7 @@ class WeatherViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(UINib(nibName: "CityCell", bundle: nil), forCellReuseIdentifier: "CityCell")
         view.backgroundColor = .black
         searchBar.barTintColor = .black
         searchBar.searchTextField.textColor = .white
@@ -44,9 +45,9 @@ class WeatherViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cities", for: indexPath) as? CityViewCell else { return UITableViewCell() }
-        let city = cities[indexPath.row]
-//        else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as? CityCell else { return UITableViewCell() }
+//        let city = cities[indexPath.row]
+        cell.cityLabel.text = cities[indexPath.row]
 //        cell.configure(with: city)
 //        cell.updateImage(with: city)
         return cell
