@@ -10,11 +10,11 @@ import Foundation
 // MARK: - Welcome
 struct Welcome: Codable {
     let count: Int
-    let data: [Datum]
+    let data: [Data]
 }
 
-// MARK: - Datum
-struct Datum: Codable {
+// MARK: - Data
+struct Data: Codable {
     let appTemp: Double
     let aqi: Int
     let cityName: String

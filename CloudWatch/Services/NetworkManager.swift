@@ -11,18 +11,27 @@ import Alamofire
 class NetworkManager {
     
     static let shared = NetworkManager()
+//    private var currentURL: String {
+//        "https://api.weatherbit.io/v2.0/current?&key="
+//    }
+//    private var apiKey: String {
+//        "7dd3708916684bd383dd005609825f55"
+//    }
+//    private var forecastURL: String {
+//        ""
+//    }
     
     private init() { }
     
-    func fetchWeather(from url: String, with completion: @escaping(Datum) -> Void) {
+    func fetchWeather(from url: String, with completion: @escaping(Data) -> Void) {
         AF.request(url)
             .validate()
-            .responseDecodable(of: Datum.self) { response in
+            .responseDecodable(of: Data.self) { response in
                 switch response.result {
-                case .success(let datum):
-                    completion(datum)
+                case .success(let responseData):
+                    completion(responseData)
                 case .failure(let error):
-                    print(error)
+                    print(error.localizedDescription)
                 }
             }
     }
@@ -55,7 +64,7 @@ class NetworkManager {
 //    }
     
     enum Link: String {
-        case films = "https://swapi.dev/api/films"
-        case starships =  "https://swapi.dev/api/starships"
+        case currentURL = "https://api.weatherbit.io/v2.0/current?key=7dd3708916684bd383dd005609825f55"
+        case forecastURL =  ""
     }
 }

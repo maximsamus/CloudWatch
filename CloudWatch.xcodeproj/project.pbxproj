@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F7A06D7A29427A15005CA48C /* CityViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A06D7929427A15005CA48C /* CityViewCell.swift */; };
+		F7A06D812943AF36005CA48C /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A06D7F2943AF36005CA48C /* CityCell.swift */; };
+		F7A06D822943AF36005CA48C /* CityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7A06D802943AF36005CA48C /* CityCell.xib */; };
 		F7C05CAB29422B52002BBFBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C05CAA29422B52002BBFBB /* AppDelegate.swift */; };
 		F7C05CAD29422B52002BBFBB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C05CAC29422B52002BBFBB /* SceneDelegate.swift */; };
 		F7C05CB229422B52002BBFBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7C05CB029422B52002BBFBB /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 
 /* Begin PBXFileReference section */
 		F7A06D7929427A15005CA48C /* CityViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewCell.swift; sourceTree = "<group>"; };
+		F7A06D7F2943AF36005CA48C /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
+		F7A06D802943AF36005CA48C /* CityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityCell.xib; sourceTree = "<group>"; };
 		F7C05CA729422B52002BBFBB /* CloudWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7C05CAA29422B52002BBFBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7C05CAC29422B52002BBFBB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +110,8 @@
 			children = (
 				F7C05CB029422B52002BBFBB /* Main.storyboard */,
 				F7C05CB529422B53002BBFBB /* LaunchScreen.storyboard */,
+				F7A06D7F2943AF36005CA48C /* CityCell.swift */,
+				F7A06D802943AF36005CA48C /* CityCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -192,6 +198,7 @@
 			files = (
 				F7C05CB729422B53002BBFBB /* LaunchScreen.storyboard in Resources */,
 				F7C05CB429422B53002BBFBB /* Assets.xcassets in Resources */,
+				F7A06D822943AF36005CA48C /* CityCell.xib in Resources */,
 				F7C05CB229422B52002BBFBB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -208,6 +215,7 @@
 				F7E8AB5D29426F63004B3E61 /* NetworkManager.swift in Sources */,
 				F7C05CC72942351C002BBFBB /* WeatherViewController.swift in Sources */,
 				F7C05CAD29422B52002BBFBB /* SceneDelegate.swift in Sources */,
+				F7A06D812943AF36005CA48C /* CityCell.swift in Sources */,
 				F7A06D7A29427A15005CA48C /* CityViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
