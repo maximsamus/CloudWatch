@@ -7,23 +7,25 @@
 
 import Foundation
 import Alamofire
+import CoreLocation
 
 class NetworkManager {
     
     static let shared = NetworkManager()
-//    private var currentURL: String {
-//        "https://api.weatherbit.io/v2.0/current?&key="
-//    }
-//    private var apiKey: String {
-//        "7dd3708916684bd383dd005609825f55"
-//    }
-//    private var forecastURL: String {
-//        ""
-//    }
     
     private init() { }
     
-    func fetchWeather(from url: String, with completion: @escaping(Data) -> Void) {
+    func fetchWeather(cityName: String) {
+        let url = "\(API.weatherURL)&q=\(cityName)"
+//        performRequest(with: url)
+    }
+    
+    func fetchWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        let url = "\(API.weatherURL)&lat=\(latitude)&lon=\(longitude)"
+//        performRequest(with: url)
+    }
+    
+    func fetchData(from url: String, with completion: @escaping(Data) -> Void) {
         AF.request(url)
             .validate()
             .responseDecodable(of: Data.self) { response in
@@ -62,9 +64,5 @@ class NetworkManager {
 //        fetchGroup.notify(queue: .main) {
 //        }
 //    }
-    
-    enum Link: String {
-        case currentURL = "https://api.weatherbit.io/v2.0/current?key=7dd3708916684bd383dd005609825f55"
-        case forecastURL =  ""
-    }
+
 }

@@ -31,6 +31,7 @@ class WeatherViewController: UITableViewController {
         searchBar.barTintColor = .black
         searchBar.searchTextField.textColor = .white
         searchBar.delegate = self
+        dismissKeyboardOnTap()
     }
     
     // MARK: - Table view data source
@@ -72,5 +73,20 @@ extension WeatherViewController: UISearchBarDelegate {
         //        items = films
         tableView.reloadData()
         
+    }
+}
+
+// MARK: - Private Methods
+
+extension WeatherViewController {
+    private func dismissKeyboardOnTap() {
+        let tapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(hideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func hideKeyboard() {
+        view.endEditing(true)
     }
 }
