@@ -11,6 +11,7 @@ class WeatherViewController: UITableViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
+    let emptyCity = Weather()
     private let cities = [
         "Warsaw",
         "Bucharest",
@@ -20,9 +21,10 @@ class WeatherViewController: UITableViewController {
         "Palermo",
         "Bremen",
         "Florence",
-        "Buenos Aires",
+//        "Buenos Aires",
         "Valencia"
     ]
+    var citiesArray = [Weather]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +34,12 @@ class WeatherViewController: UITableViewController {
         searchBar.searchTextField.textColor = .white
         searchBar.delegate = self
         dismissKeyboardOnTap()
+        
+        if citiesArray.isEmpty {
+            citiesArray = Array(repeating: emptyCity, count: cities.count)
+        }
+        
+        addCities()
     }
     
     // MARK: - Table view data source
@@ -79,6 +87,18 @@ extension WeatherViewController: UISearchBarDelegate {
 // MARK: - Private Methods
 
 extension WeatherViewController {
+    
+    func addCities() {
+        
+        NetworkManager.shared.getCitiesWeather(cities: cities) { index, weather in
+            self.citiesArray[index] = weather
+//            self.citiesArray[index].name = self.cities[index]
+            print(self.citiesArray)
+
+        }
+        
+    }
+    
     private func dismissKeyboardOnTap() {
         let tapGesture = UITapGestureRecognizer(target: self,
                                                 action: #selector(hideKeyboard))

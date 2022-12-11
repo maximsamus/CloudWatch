@@ -8,18 +8,17 @@
 import Foundation
 
 struct Weather: Codable {
-    let dt: Int
-    let temp: Double
-    let feelsLike: Double
-    let pressure: Int
-    let humidity: Int
-    let dewPoint: Double
-    let windSpeed: Double
-    let windDeg: Int
-    let windGust: Double
-    let clouds: Int
-    let weather: [WeatherDetail]
-
+    let dt: Int = 0
+    let temp: Double = 0.0
+    let feelsLike: Double = 0.0
+    let pressure: Int = 0
+    let humidity: Int = 0
+    let dewPoint: Double = 0.0
+    let windSpeed: Double = 0.0
+    let windDeg: Int = 0
+    let windGust: Double = 0.0
+    let clouds: Int = 0
+    let weather: [WeatherDetail] = [WeatherDetail]()
 
     enum CodingKeys: String, CodingKey {
         case dt, temp
@@ -31,6 +30,7 @@ struct Weather: Codable {
         case windGust = "wind_gust"
         case weather, clouds
     }
+    init() { }
 }
 
 //// MARK: - Welcome
