@@ -11,7 +11,7 @@ class WeatherViewController: UITableViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    let emptyCity = Weather()
+//    let emptyCity = Current()
     private let cities = [
         "Warsaw",
         "Bucharest",
@@ -21,10 +21,10 @@ class WeatherViewController: UITableViewController {
         "Palermo",
         "Bremen",
         "Florence",
-//        "Buenos Aires",
         "Valencia"
     ]
-    var citiesArray = [Weather]()
+//    var citiesArray = [Current]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +35,17 @@ class WeatherViewController: UITableViewController {
         searchBar.delegate = self
         dismissKeyboardOnTap()
         
-        if citiesArray.isEmpty {
-            citiesArray = Array(repeating: emptyCity, count: cities.count)
+        NetworkManager.shared.fetchWeather(cityName: "Bucharest") { weather in
+            print(weather)
         }
-        
-        addCities()
+//                if citiesArray.isEmpty {
+//                    citiesArray = Array(repeating: emptyCity, count: cities.count)
+//                }
+//
+//                addCities()
+//
     }
+    
     
     // MARK: - Table view data source
     
@@ -55,14 +60,14 @@ class WeatherViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as? CityCell else { return UITableViewCell() }
-//        let city = cities[indexPath.row]
+        //        let city = cities[indexPath.row]
         cell.cityLabel.text = cities[indexPath.row]
-//        cell.configure(with: city)
-//        cell.updateImage(with: city)
+        //        cell.configure(with: city)
+        //        cell.updateImage(with: city)
         return cell
-        }
-    
+    }
 }
+
 
 // MARK: - Search bar
 
@@ -88,16 +93,16 @@ extension WeatherViewController: UISearchBarDelegate {
 
 extension WeatherViewController {
     
-    func addCities() {
-        
-        NetworkManager.shared.getCitiesWeather(cities: cities) { index, weather in
-            self.citiesArray[index] = weather
-//            self.citiesArray[index].name = self.cities[index]
-            print(self.citiesArray)
-
-        }
-        
-    }
+//    func addCities() {
+//        
+//        NetworkManager.shared.getCitiesWeather(cities: cities) { index, weather in
+//            self.citiesArray[index] = weather.current
+//            //            self.citiesArray[index].name = self.cities[index]
+//            print(self.citiesArray)
+//            print(weather.current)
+//        }
+//        
+//    }
     
     private func dismissKeyboardOnTap() {
         let tapGesture = UITapGestureRecognizer(target: self,

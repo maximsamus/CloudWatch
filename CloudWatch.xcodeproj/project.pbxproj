@@ -99,11 +99,11 @@
 		F7C05CC229422E5E002BBFBB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F7C159AA294509730078350B /* WeatherResponse.swift */,
 				F7E8AB5929426C11004B3E61 /* Weather.swift */,
 				F7C159AC294509CC0078350B /* WeatherDetail.swift */,
 				F7C159AE29450A3E0078350B /* DailyWeather.swift */,
 				F7C159B029450A570078350B /* Temperature.swift */,
-				F7C159AA294509730078350B /* WeatherResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

@@ -6,9 +6,9 @@
 //
 
 import Foundation
-
-struct WeatherDetail: Codable {
-    let main: String
-    let description: String
-    let icon: String
-}
+//
+//struct WeatherDetail: Codable {
+//    let main: String
+//    let description: String
+//    let icon: String
+//}

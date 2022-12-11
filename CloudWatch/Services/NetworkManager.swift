@@ -14,45 +14,43 @@ class NetworkManager {
     static let shared = NetworkManager()
     
     private init() { }
-    
-    func getCitiesWeather(cities: [String], with completion: @escaping(Int, Weather) -> Void) {
+        
+    func getCitiesWeather(cities: [String], with completion: @escaping(Int, WeatherResponse) -> Void) {
         for (index, item) in cities.enumerated() {
             fetchWeather(cityName: item) { weather in
+                print(weather.current ?? "")
                 completion(index, weather)
+
             }
         }
     }
-        private func fetchWeather(cityName: String, with completion: @escaping(Weather) -> Void) {
-            getCoordinates(cityName: cityName) { coordinate, error in
-                guard let lat = coordinate?.latitude else { return }
-                guard let lon = coordinate?.longitude else { return }
-                let url = "\(API.weatherURL)&lat=\(lat)&lon=\(lon)"
-                self.fetchData(from: url) { weather in
-                    completion(weather.current)
-                }
-            }
-            
-
-        }
     
-    private func getCoordinates(cityName: String, with completion: @escaping(_ coordinate: CLLocationCoordinate2D?, _ error: Error?) -> Void) {
+    func fetchWeather(cityName: String, with completion: @escaping(WeatherResponse) -> Void) {
+        configureCoordinates(cityName: cityName) { lat, lon in
+            let url = "\(API.weatherURL)&lat=\(lat)&lon=\(lon)"
+            print(url)
+            self.fetchData(from: url) { weather in
+                completion(weather)
+                print(weather)
+            }
+        }
+    }
+    
+    func getCoordinates(cityName: String, with completion: @escaping(_ coordinate: CLLocationCoordinate2D?, _ error: Error?) -> Void) {
         CLGeocoder().geocodeAddressString(cityName) { placemark, error in
             completion(placemark?.first?.location?.coordinate, error)
         }
     }
-//    private func fetchWeather(cityName: String, with completion: @escaping(Weather) -> Void) {
-//        let url = "\(API.weatherURL)&q=\(cityName)"
-//        fetchData(from: url) { weather in
-//            completion(weather.current)
-//        }
-//    }
     
-    //    func fetchWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
-    //        let url = "\(API.weatherURL)&lat=\(latitude)&lon=\(longitude)"
-    //       performRequest(with: url)
-    //    }
+    func configureCoordinates(cityName: String, with completion: @escaping(_ lat: Double , _ lon: Double) -> Void) {
+        getCoordinates(cityName: cityName) { coordinate, error in
+            guard let lat = coordinate?.latitude else { return }
+            guard let lon = coordinate?.longitude else { return }
+            completion(lat, lon)
+        }
+    }
     
-    private func fetchData(from url: String, with completion: @escaping(WeatherResponse) -> Void) {
+    func fetchData(from url: String, with completion: @escaping(WeatherResponse) -> Void) {
         AF.request(url)
             .validate()
             .responseDecodable(of: WeatherResponse.self) { response in
@@ -64,32 +62,4 @@ class NetworkManager {
                 }
             }
     }
-    
-    //    func searchStarships(for name: String, where url: String, with completion: @escaping(Starships) -> Void) {
-    //        let parameters: [String: String] = ["search": name]
-    //        AF.request(url, parameters: parameters)
-    //            .validate()
-    //            .responseDecodable(of: Starships.self) { response in
-    //                guard let starships = response.value else { return }
-    //                completion(starships)
-    //            }
-    //    }
-    //
-    //    func fetch<T: Decodable & Displayable>(_ list: [String], of: T.Type, with completion: @escaping([T]) -> Void) {
-    //        var items: [T] = []
-    //        let fetchGroup = DispatchGroup()
-    //        list.forEach { (url) in
-    //            fetchGroup.enter()
-    //            AF.request(url).validate().responseDecodable(of: T.self) { (response) in
-    //                if let value = response.value {
-    //                    items.append(value)
-    //                }
-    //                completion(items)
-    //                fetchGroup.leave()
-    //            }
-    //        }
-    //        fetchGroup.notify(queue: .main) {
-    //        }
-    //    }
-    
 }
