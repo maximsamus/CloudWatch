@@ -34,24 +34,14 @@ struct Current: Codable {
     let humidity: Int?
     let clouds: Int?
     let visibility: Int?
-    let weather: [Weather]
+    let weather: [Weather]?
 }
-
-//// MARK: - Rain
-//struct Rain: Codable {
-//    let the1H: Double
-//
-//    enum CodingKeys: String, CodingKey {
-//        case the1H = "1h"
-//    }
-//}
 
 // MARK: - Weather
 struct Weather: Codable {
     let id: Int?
     let main: Main?
     let icon: Icon?
-
 }
 
 enum Icon: String, Codable {
@@ -85,21 +75,9 @@ struct Daily: Codable {
     let dt, sunrise, sunset, moonrise: Int
     let moonset: Int?
     let temp: Double?
-//    let feelsLike: Double
     let pressure: Int?
     let humidity: Int?
     let dewPoint: Double?
     let windSpeed: Double?
     let weather: [Weather]?
 }
-
-//// MARK: - FeelsLike
-//struct FeelsLike: Codable {
-//    let day, night, eve, morn: Double
-//}
-
-//// MARK: - Temp
-//struct Temp: Codable {
-//    let day, min, max, night: Double
-//    let eve, morn: Double
-//}

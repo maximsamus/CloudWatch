@@ -11,7 +11,6 @@ class WeatherViewController: UITableViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-//    let emptyCity = Current()
     private let cities = [
         "Warsaw",
         "Bucharest",
@@ -24,7 +23,7 @@ class WeatherViewController: UITableViewController {
         "Valencia"
     ]
 //    var citiesArray = [Current]()
-    
+    //    let emptyCity = Current()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +35,7 @@ class WeatherViewController: UITableViewController {
         dismissKeyboardOnTap()
         
         NetworkManager.shared.fetchWeather(cityName: "Bucharest") { weather in
-            print(weather)
+            print(weather.current ?? "")
         }
 //                if citiesArray.isEmpty {
 //                    citiesArray = Array(repeating: emptyCity, count: cities.count)
@@ -48,26 +47,19 @@ class WeatherViewController: UITableViewController {
     
     
     // MARK: - Table view data source
-    
-    //    override func numberOfSections(in tableView: UITableView) -> Int {
-    //        return 0
-    //    }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         cities.count
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as? CityCell else { return UITableViewCell() }
-        //        let city = cities[indexPath.row]
         cell.cityLabel.text = cities[indexPath.row]
         //        cell.configure(with: city)
         //        cell.updateImage(with: city)
         return cell
     }
 }
-
 
 // MARK: - Search bar
 
@@ -79,13 +71,10 @@ extension WeatherViewController: UISearchBarDelegate {
         self.tableView.reloadData()
     }
     
-    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = nil
         searchBar.resignFirstResponder()
-        //        items = films
         tableView.reloadData()
-        
     }
 }
 
