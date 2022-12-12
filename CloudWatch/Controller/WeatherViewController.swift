@@ -11,6 +11,8 @@ class WeatherViewController: UITableViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
+    let emptyCity = WeatherResponse()
+    var citiesWeather: [WeatherResponse] = []
     private let cities = [
         "Warsaw",
         "Bucharest",
@@ -23,8 +25,6 @@ class WeatherViewController: UITableViewController {
         "Buenos Aires",
         "Valencia"
     ]
-    var citiesWeather: [WeatherResponse] = []
-    //    let emptyCity = Current()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +34,9 @@ class WeatherViewController: UITableViewController {
         searchBar.searchTextField.textColor = .white
         searchBar.delegate = self
         dismissKeyboardOnTap()
+        if citiesWeather.isEmpty {
+            citiesWeather = Array(repeating: emptyCity, count: cities.count + 1)
+        }
         addCities()
         print(citiesWeather)
     }
@@ -47,7 +50,7 @@ class WeatherViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as? CityCell else { return UITableViewCell() }
         cell.cityLabel.text = cities[indexPath.row]
-        //        cell.configure(with: city)
+        cell.configure(weather: citiesWeather[indexPath.row])
         //        cell.updateImage(with: city)
         return cell
     }
@@ -77,6 +80,9 @@ extension WeatherViewController {
     private func addCities() {
         NetworkManager.shared.getCitiesWeather(cities: cities) { weather in
             self.citiesWeather = weather
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     

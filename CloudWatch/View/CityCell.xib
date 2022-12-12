@@ -72,7 +72,7 @@
                 <outlet property="cityLabel" destination="i7I-8M-liA" id="3M5-s9-WT9"/>
                 <outlet property="cityViewCell" destination="7Ol-Lj-ydJ" id="VFv-ZT-LUG"/>
                 <outlet property="tempLabel" destination="Fc0-Dr-iYz" id="4x3-lj-pOL"/>
-                <outlet property="timeLabel" destination="IOt-vB-4mB" id="q2S-0z-bGA"/>
+                <outlet property="timeLabel" destination="D5D-ZT-UQl" id="1a0-Wn-ZGB"/>
                 <outlet property="weatherImage" destination="lnl-Wv-ux4" id="IZC-or-Sed"/>
             </connections>
             <point key="canvasLocation" x="119.08396946564885" y="-0.70422535211267612"/>

@@ -9,23 +9,28 @@ import Foundation
 
 // MARK: - WeatherResponse
 struct WeatherResponse: Codable {
-    let lat, lon: Double
-    let timezone: String
-    let current: Current
-    let hourly: [Current]
-    let daily: [Daily]
+    var lat: Double = 0.0
+    var lon: Double  = 0.0
+    var timezone: String  = ""
+    var current: Current = Current()
+    var hourly: [Current] = [Current]()
+    var daily: [Daily] = [Daily]()
+    
+    init() { }
 }
 
 // MARK: - Current
 struct Current: Codable {
-    let dt: Int
-    let temp: Double
-    let pressure: Int
-    let humidity: Int
-    let uvi: Double
-    let clouds: Int
-    let visibility: Int
-    let weather: [Weather]
+    var dt: Int = 0
+    var temp: Double = 0.0
+    var pressure: Int = 0
+    var humidity: Int = 0
+    var uvi: Double = 0.0
+    var clouds: Int = 0
+    var visibility: Int = 0
+    var weather: [Weather] = [Weather]()
+    
+    init() { }
 }
 
 // MARK: - Weather
