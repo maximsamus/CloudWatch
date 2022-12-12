@@ -20,9 +20,10 @@ class WeatherViewController: UITableViewController {
         "Palermo",
         "Bremen",
         "Florence",
+        "Buenos Aires",
         "Valencia"
     ]
-//    var citiesArray = [Current]()
+    //    var citiesArray = [Current]()
     //    let emptyCity = Current()
     
     override func viewDidLoad() {
@@ -34,20 +35,20 @@ class WeatherViewController: UITableViewController {
         searchBar.delegate = self
         dismissKeyboardOnTap()
         
-        NetworkManager.shared.fetchWeather(cityName: "Bucharest") { weather in
-            print(weather.current ?? "")
-        }
-//                if citiesArray.isEmpty {
-//                    citiesArray = Array(repeating: emptyCity, count: cities.count)
-//                }
-//
-//                addCities()
-//
+//        NetworkManager.shared.fetchWeather(cityName: "Buenos Aires") { weather in
+//            print(weather)
+//        }
+        //                if citiesArray.isEmpty {
+        //                    citiesArray = Array(repeating: emptyCity, count: cities.count)
+        //                }
+        //
+        //                addCities()
+        //
     }
     
     
     // MARK: - Table view data source
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         cities.count
     }
@@ -82,16 +83,16 @@ extension WeatherViewController: UISearchBarDelegate {
 
 extension WeatherViewController {
     
-//    func addCities() {
-//        
-//        NetworkManager.shared.getCitiesWeather(cities: cities) { index, weather in
-//            self.citiesArray[index] = weather.current
-//            //            self.citiesArray[index].name = self.cities[index]
-//            print(self.citiesArray)
-//            print(weather.current)
-//        }
-//        
-//    }
+    //    func addCities() {
+    //
+    //        NetworkManager.shared.getCitiesWeather(cities: cities) { index, weather in
+    //            self.citiesArray[index] = weather.current
+    //            //            self.citiesArray[index].name = self.cities[index]
+    //            print(self.citiesArray)
+    //            print(weather.current)
+    //        }
+    //
+    //    }
     
     private func dismissKeyboardOnTap() {
         let tapGesture = UITapGestureRecognizer(target: self,

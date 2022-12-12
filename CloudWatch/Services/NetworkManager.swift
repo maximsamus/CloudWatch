@@ -18,7 +18,7 @@ class NetworkManager {
     func getCitiesWeather(cities: [String], with completion: @escaping(Int, WeatherResponse) -> Void) {
         for (index, item) in cities.enumerated() {
             fetchWeather(cityName: item) { weather in
-                print(weather.current ?? "")
+                print(weather.current)
                 completion(index, weather)
 
             }

@@ -7,77 +7,59 @@
 
 import Foundation
 
-// MARK: - Empty
+// MARK: - WeatherResponse
 struct WeatherResponse: Codable {
-    let lat: Double?
-    let lon: Double?
-    let timezone: String?
-    let current: Current?
-    let hourly: [Current]?
-    let daily: [Daily]?
-    let alerts: [Alert]?
-}
-
-// MARK: - Alert
-struct Alert: Codable {
-    let event: String?
-    let start: Int?
-    let end: Int?
-    let tags: [String]?
+    let lat, lon: Double
+    let timezone: String
+    let current: Current
+    let hourly: [Current]
+    let daily: [Daily]
 }
 
 // MARK: - Current
 struct Current: Codable {
-    let dt: Int?
-    let temp: Double?
-    let pressure: Int?
-    let humidity: Int?
-    let clouds: Int?
-    let visibility: Int?
-    let weather: [Weather]?
+    let temp: Double
+    let pressure: Int
+    let humidity: Int
+    let uvi: Double
+    let clouds: Int
+    let visibility: Int
+    let weather: [Weather]
 }
 
 // MARK: - Weather
 struct Weather: Codable {
-    let id: Int?
-    let main: Main?
-    let icon: Icon?
-}
-
-enum Icon: String, Codable {
-    case the03D = "03d"
-    case the04D = "04d"
-    case the04N = "04n"
-    case the10D = "10d"
-    case the10N = "10n"
-    case the13D = "13d"
-    case the13N = "13n"
+    let id: Int
+    let main: Main
+    let icon: String
 }
 
 enum Main: String, Codable {
+    case clear = "Clear"
     case clouds = "Clouds"
     case rain = "Rain"
     case snow = "Snow"
-}
-
-enum Description: String, Codable {
-    case lightRain = "light rain"
-    case lightSnow = "light snow"
-    case moderateRain = "moderate rain"
-    case overcastClouds = "overcast clouds"
-    case rainAndSnow = "rain and snow"
-    case scatteredClouds = "scattered clouds"
-    case snow = "snow"
+    case thunderstorm = "Thunderstorm"
+    case drizzle = "Drizzle"
+    case atmosphere = "Atmosphere"
 }
 
 // MARK: - Daily
 struct Daily: Codable {
     let dt, sunrise, sunset, moonrise: Int
-    let moonset: Int?
-    let temp: Double?
-    let pressure: Int?
-    let humidity: Int?
-    let dewPoint: Double?
-    let windSpeed: Double?
-    let weather: [Weather]?
+    let moonset: Int
+    let temp: Temp
+    let pressure, humidity: Int
+    let weather: [Weather]
+    let clouds: Int
+    let pop: Double
+    let rain: Double?
+    let uvi: Double
+    let snow: Double?
+}
+
+// MARK: - Temp
+struct Temp: Codable {
+    let day, min, max, night: Double
+    let eve, morn: Double
 }
