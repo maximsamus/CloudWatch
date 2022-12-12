@@ -18,6 +18,7 @@ struct WeatherResponse: Codable {
 
 // MARK: - Current
 struct Current: Codable {
+    let dt: Int
     let temp: Double
     let pressure: Int
     let humidity: Int

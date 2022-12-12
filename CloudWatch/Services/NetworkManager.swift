@@ -14,18 +14,18 @@ class NetworkManager {
     static let shared = NetworkManager()
     
     private init() { }
-        
-    func getCitiesWeather(cities: [String], with completion: @escaping(Int, WeatherResponse) -> Void) {
-        for (index, item) in cities.enumerated() {
-            fetchWeather(cityName: item) { weather in
-                print(weather.current)
-                completion(index, weather)
-
+    
+    func getCitiesWeather(cities: [String], with completion: @escaping([WeatherResponse]) -> Void) {
+        var items: [WeatherResponse] = []
+        cities.forEach { item in
+            fetchWeather(cityName: item) { response in
+                items.append(response)
+                completion(items)
             }
         }
     }
     
-    func fetchWeather(cityName: String, with completion: @escaping(WeatherResponse) -> Void) {
+    private func fetchWeather(cityName: String, with completion: @escaping(WeatherResponse) -> Void) {
         configureCoordinates(cityName: cityName) { lat, lon in
             let url = "\(API.weatherURL)&lat=\(lat)&lon=\(lon)"
             print(url)
@@ -36,13 +36,13 @@ class NetworkManager {
         }
     }
     
-    func getCoordinates(cityName: String, with completion: @escaping(_ coordinate: CLLocationCoordinate2D?, _ error: Error?) -> Void) {
+    private func getCoordinates(cityName: String, with completion: @escaping(_ coordinate: CLLocationCoordinate2D?, _ error: Error?) -> Void) {
         CLGeocoder().geocodeAddressString(cityName) { placemark, error in
             completion(placemark?.first?.location?.coordinate, error)
         }
     }
     
-    func configureCoordinates(cityName: String, with completion: @escaping(_ lat: Double , _ lon: Double) -> Void) {
+    private func configureCoordinates(cityName: String, with completion: @escaping(_ lat: Double , _ lon: Double) -> Void) {
         getCoordinates(cityName: cityName) { coordinate, error in
             guard let lat = coordinate?.latitude else { return }
             guard let lon = coordinate?.longitude else { return }
@@ -50,7 +50,7 @@ class NetworkManager {
         }
     }
     
-    func fetchData(from url: String, with completion: @escaping(WeatherResponse) -> Void) {
+    private func fetchData(from url: String, with completion: @escaping(WeatherResponse) -> Void) {
         AF.request(url)
             .validate()
             .responseDecodable(of: WeatherResponse.self) { response in
@@ -63,3 +63,20 @@ class NetworkManager {
             }
     }
 }
+//    func fetch<T: Codable>(_ list: [String], of: T.Type, with completion: @escaping([T]) -> Void) {
+//        var items: [T] = []
+//        let fetchGroup = DispatchGroup()
+//        list.forEach { (url) in
+//            fetchGroup.enter()
+//            AF.request(url).validate().responseDecodable(of: T.self) { response in
+//                if let value = response.value {
+//                    items.append(value)
+//                }
+//                completion(items)
+//                fetchGroup.leave()
+//            }
+//        }
+//        fetchGroup.notify(queue: .main) {
+//        }
+//    }
+
