@@ -21,13 +21,5 @@ class CityCell: UITableViewCell {
         tempLabel.text = "\(weather.tempString)°C"
         cityLabel.text = weather.cityName
         weatherImage.image = UIImage(systemName: weather.weather.conditionName)
-        //
-//        func awakeFromNib() {
-//                super.awakeFromNib()
-//            }
-//        //
-        //    override func setSelected(_ selected: Bool, animated: Bool) {
-        //        super.setSelected(selected, animated: animated)
-        //    }
     }
 }

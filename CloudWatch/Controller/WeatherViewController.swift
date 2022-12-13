@@ -8,12 +8,12 @@
 import UIKit
 
 class WeatherViewController: UITableViewController {
-   
+    
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var citiesWeather: [WeatherResponse]?
-    var filterCitiesWeather: [WeatherResponse]?
     let searchController = UISearchController(searchResultsController: nil)
+    var citiesWeather: [WeatherResponse]?
+    var filterCitiesWeather = [WeatherResponse]()
     var searchBarIsEmpty: Bool {
         guard let text = searchController.searchBar.text else { return false }
         return text.isEmpty
@@ -44,34 +44,41 @@ class WeatherViewController: UITableViewController {
         navigationItem.searchController = searchController
         definesPresentationContext = false
         navigationItem.hidesSearchBarWhenScrolling = false
-//        searchBar.barTintColor = .black
-//        searchBar.searchTextField.textColor = .white
-//        searchBar.delegate = self
+        searchController.searchBar.searchTextField.textColor = .white
         dismissKeyboardOnTap()
         addCities()
     }
     
+    // MARK: - Navigation
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedCell = tableView.cellForRow(at: indexPath) else { return }
         performSegue(withIdentifier: "showDetail", sender: selectedCell)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            guard let detailVC = segue.destination as? DetailViewController else { return }
-            guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            guard let weather = citiesWeather?[indexPath.row] else { return }
-            detailVC.weather = weather
+        guard let detailVC = segue.destination as? DetailViewController else { return }
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+        guard let weather = citiesWeather?[indexPath.row] else { return }
+        detailVC.weather = weather
     }
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        citiesWeather?.count ?? 0
+        if isFiltering {
+            return filterCitiesWeather.count
+        }
+        return citiesWeather?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as? CityCell else { return UITableViewCell() }
-        guard let city = citiesWeather?[indexPath.row].data.first else { return CityCell() }
-        cell.configure(weather: city)
+        if isFiltering {
+            guard let city = filterCitiesWeather[indexPath.row].data.first else { return CityCell() }
+            cell.configure(weather: city)
+        } else {
+            guard let city = citiesWeather?[indexPath.row].data.first else { return CityCell() }
+            cell.configure(weather: city)
+        }
         return cell
     }
 }
@@ -86,30 +93,17 @@ extension WeatherViewController: UISearchResultsUpdating {
     
     private func filterText(_ searchText: String) {
         guard let weatherData = citiesWeather else { return }
-        filterCitiesWeather = weatherData.filter {
-            guard let data = $0.data.first?.cityName.contains(searchText) else { return }
-//            return data
+        filterCitiesWeather = weatherData.filter { dataWeahter -> Bool in
+            (dataWeahter.data.first?.cityName.contains(searchText))!
         }
         tableView.reloadData()
     }
-//    UINavigationBarDelegate
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        guard let cityName = searchBar.text else { return }
-//        //        NetworkManager.shared.searchStarships(for: shipName, where: NetworkManager.Link.starships.rawValue) { starships in
-//        //            self.items = starships.all
-//        self.tableView.reloadData()
-//    }
-//
-//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        searchBar.text = nil
-//        searchBar.resignFirstResponder()
-//        tableView.reloadData()
-//    }
 }
 
 // MARK: - Private Methods
 
 extension WeatherViewController {
+    
     private func addCities() {
         NetworkManager.shared.getCitiesWeather(cities: cities) { weather in
             self.citiesWeather = weather
@@ -125,7 +119,7 @@ extension WeatherViewController {
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
     }
-
+    
     @objc private func hideKeyboard() {
         view.endEditing(true)
     }
