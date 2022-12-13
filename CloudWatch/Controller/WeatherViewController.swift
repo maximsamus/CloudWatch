@@ -29,13 +29,24 @@ class WeatherViewController: UITableViewController {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "CityCell", bundle: nil), forCellReuseIdentifier: "CityCell")
         view.backgroundColor = .black
-        searchBar.barTintColor = .black
-        searchBar.searchTextField.textColor = .white
-        searchBar.delegate = self
+//        searchBar.barTintColor = .black
+//        searchBar.searchTextField.textColor = .white
+//        searchBar.delegate = self
         dismissKeyboardOnTap()
         addCities()
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let selectedCell = tableView.cellForRow(at: indexPath) else { return }
+        performSegue(withIdentifier: "showDetail", sender: selectedCell)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            guard let detailVC = segue.destination as? DetailViewController else { return }
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            guard let weather = citiesWeather?[indexPath.row] else { return }
+            detailVC.weather = weather
+    }
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -52,20 +63,20 @@ class WeatherViewController: UITableViewController {
 
 // MARK: - Search bar
 
-extension WeatherViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let cityName = searchBar.text else { return }
-        //        NetworkManager.shared.searchStarships(for: shipName, where: NetworkManager.Link.starships.rawValue) { starships in
-        //            self.items = starships.all
-        self.tableView.reloadData()
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = nil
-        searchBar.resignFirstResponder()
-        tableView.reloadData()
-    }
-}
+//extension WeatherViewController: UISearchBarDelegate {
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        guard let cityName = searchBar.text else { return }
+//        //        NetworkManager.shared.searchStarships(for: shipName, where: NetworkManager.Link.starships.rawValue) { starships in
+//        //            self.items = starships.all
+//        self.tableView.reloadData()
+//    }
+//
+//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+//        searchBar.text = nil
+//        searchBar.resignFirstResponder()
+//        tableView.reloadData()
+//    }
+//}
 
 // MARK: - Private Methods
 
@@ -85,7 +96,7 @@ extension WeatherViewController {
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
     }
-    
+
     @objc private func hideKeyboard() {
         view.endEditing(true)
     }

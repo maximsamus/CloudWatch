@@ -18,9 +18,9 @@ struct Datum: Codable {
     //    let appTemp: Double
     //    let aqi: Int
     let cityName: String
-//    let clouds: Int
-//    let countryCode: String
-//    let datetime: String
+    //    let clouds: Int
+    //    let countryCode: String
+    //    let datetime: String
     //    let dewpt: Double
     //    let dhi: Double
     //    let dni: Int
@@ -30,7 +30,7 @@ struct Datum: Codable {
     //    let hAngle: Int
     //    let lat: Double
     //    let lon: Double
-//        let obTime: String
+    //        let obTime: String
     //    let pod: String
     //    let precip: Int
     //    let pres: Double
@@ -48,9 +48,9 @@ struct Datum: Codable {
         String(format: "%.1f", temp)
     }
     let timezone: String
-//    let ts: Int
-//    let uv: Int
-//    let vis: Int
+    //    let ts: Int
+    //    let uv: Int
+    //    let vis: Int
     let weather: Weather
     //    let windCdir, windCdirFull: String
     //    let windDir: Int
@@ -60,9 +60,9 @@ struct Datum: Codable {
         //        case appTemp = "app_temp"
         //        case aqi
         case cityName = "city_name"
-//        case clouds
-//        case countryCode = "country_code"
-//        case datetime
+        //        case clouds
+        //        case countryCode = "country_code"
+        //        case datetime
         //        case dewpt
         //        case dhi
         //        case dni
@@ -72,7 +72,7 @@ struct Datum: Codable {
         //        case hAngle = "h_angle"
         //        case lat
         //        case lon
-//                case obTime = "ob_time"
+        //                case obTime = "ob_time"
         //        case pod
         //        case precip
         //        case pres
@@ -86,7 +86,7 @@ struct Datum: Codable {
         //        case sunrise
         //        case sunset
         case temp
-//        case tempString
+        //        case tempString
         case timezone
         //        case ts
         //        case uv
@@ -104,10 +104,30 @@ struct Weather: Codable {
     let weatherDescription: String
     let code: Int
     let icon: String
-    
+    var conditionName: String {
+        switch code {
+        case 200...232:
+            return "cloud.bolt.rain"
+        case 300...321:
+            return "cloud.drizzle"
+        case 500...531:
+            return "cloud.rain"
+        case 600...622:
+            return "cloud.snow"
+        case 701...781:
+            return "cloud.fog"
+        case 800:
+            return "sun.max"
+        case 801...804:
+            return "cloud.bolt"
+        default:
+            return "cloud"
+        }
+    }
     enum CodingKeys: String, CodingKey {
         case weatherDescription = "description"
         case code
         case icon
     }
 }
+
