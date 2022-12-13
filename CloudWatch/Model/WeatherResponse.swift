@@ -20,7 +20,7 @@ struct Datum: Codable {
     let cityName: String
 //    let clouds: Int
 //    let countryCode: String
-    let datetime: String
+//    let datetime: String
     //    let dewpt: Double
     //    let dhi: Double
     //    let dni: Int
@@ -30,7 +30,7 @@ struct Datum: Codable {
     //    let hAngle: Int
     //    let lat: Double
     //    let lon: Double
-    //    let obTime: String
+//        let obTime: String
     //    let pod: String
     //    let precip: Int
     //    let pres: Double
@@ -47,7 +47,7 @@ struct Datum: Codable {
     var tempString: String {
         String(format: "%.1f", temp)
     }
-//    let timezone: String
+    let timezone: String
 //    let ts: Int
 //    let uv: Int
 //    let vis: Int
@@ -62,7 +62,7 @@ struct Datum: Codable {
         case cityName = "city_name"
 //        case clouds
 //        case countryCode = "country_code"
-        case datetime
+//        case datetime
         //        case dewpt
         //        case dhi
         //        case dni
@@ -72,7 +72,7 @@ struct Datum: Codable {
         //        case hAngle = "h_angle"
         //        case lat
         //        case lon
-        //        case obTime = "ob_time"
+//                case obTime = "ob_time"
         //        case pod
         //        case precip
         //        case pres
@@ -87,7 +87,7 @@ struct Datum: Codable {
         //        case sunset
         case temp
 //        case tempString
-//        case timezone
+        case timezone
         //        case ts
         //        case uv
         //        case vis
@@ -111,67 +111,3 @@ struct Weather: Codable {
         case icon
     }
 }
-
-
-//// MARK: - WeatherResponse
-//struct WeatherResponse: Codable {
-//    var lat: Double = 0.0
-//    var lon: Double  = 0.0
-//    var timezone: String  = ""
-//    var current: Current = Current()
-//    var hourly: [Current] = [Current]()
-//    var daily: [Daily] = [Daily]()
-//
-//    init() { }
-//}
-//
-//// MARK: - Current
-//struct Current: Codable {
-//    var dt: Int = 0
-//    var temp: Double = 0.0
-//    var pressure: Int = 0
-//    var humidity: Int = 0
-//    var uvi: Double = 0.0
-//    var clouds: Int = 0
-//    var visibility: Int = 0
-//    var weather: [Weather] = [Weather]()
-//
-//    init() { }
-//}
-//
-//// MARK: - Weather
-//struct Weather: Codable {
-//    let id: Int
-//    let main: Main
-//    let icon: String
-//}
-//
-//enum Main: String, Codable {
-//    case clear = "Clear"
-//    case clouds = "Clouds"
-//    case rain = "Rain"
-//    case snow = "Snow"
-//    case thunderstorm = "Thunderstorm"
-//    case drizzle = "Drizzle"
-//    case atmosphere = "Atmosphere"
-//}
-//
-//// MARK: - Daily
-//struct Daily: Codable {
-//    let dt, sunrise, sunset, moonrise: Int
-//    let moonset: Int
-//    let temp: Temp
-//    let pressure, humidity: Int
-//    let weather: [Weather]
-//    let clouds: Int
-//    let pop: Double
-//    let rain: Double?
-//    let uvi: Double
-//    let snow: Double?
-//}
-//
-//// MARK: - Temp
-//struct Temp: Codable {
-//    let day, min, max, night: Double
-//    let eve, morn: Double
-//}

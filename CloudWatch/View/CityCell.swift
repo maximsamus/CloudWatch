@@ -16,16 +16,18 @@ class CityCell: UITableViewCell {
     
     
     func configure(weather: Datum) {
-        timeLabel.text = weather.datetime
-        tempLabel.text = weather.tempString
+        NetworkManager.shared.getTimeFromTimeZone(from: weather.timezone) { time in
+            self.timeLabel.text = time
+        }
+        tempLabel.text = "\(weather.tempString)°C"
         cityLabel.text = weather.cityName
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
+//
+//    override func awakeFromNib() {
+//        super.awakeFromNib()
+//    }
+//
+//    override func setSelected(_ selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//    }
 }

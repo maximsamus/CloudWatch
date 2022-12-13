@@ -11,7 +11,6 @@ class WeatherViewController: UITableViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-//    let emptyCity = WeatherResponse()
     var citiesWeather: [WeatherResponse]?
     private let cities = [
         "Warsaw",
@@ -22,7 +21,7 @@ class WeatherViewController: UITableViewController {
         "Palermo",
         "Bremen",
         "Florence",
-        "Buenos Aires",
+        "Buenos-Aires",
         "Valencia"
     ]
     
@@ -34,11 +33,7 @@ class WeatherViewController: UITableViewController {
         searchBar.searchTextField.textColor = .white
         searchBar.delegate = self
         dismissKeyboardOnTap()
-//        if citiesWeather.isEmpty {
-//            citiesWeather = Array(repeating: emptyCity, count: cities.count)
-//        }
         addCities()
-        print(citiesWeather)
     }
     
     
@@ -49,9 +44,8 @@ class WeatherViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as? CityCell else { return UITableViewCell() }
-        guard let city = citiesWeather?[indexPath.row].data.first else { return UITableViewCell() }
+        guard let city = citiesWeather?[indexPath.row].data.first else { return CityCell() }
         cell.configure(weather: city)
-        //        cell.updateImage(with: city)
         return cell
     }
 }
@@ -76,14 +70,6 @@ extension WeatherViewController: UISearchBarDelegate {
 // MARK: - Private Methods
 
 extension WeatherViewController {
-    
-//    private func fetchData(from url: String?) {
-//        NetworkManager.shared.fetchData(from: url) { citiesWeather in
-//            self.citiesWeather = citiesWeather
-//            self.tableView.reloadData()
-//        }
-//    }
-    
     private func addCities() {
         NetworkManager.shared.getCitiesWeather(cities: cities) { weather in
             self.citiesWeather = weather

@@ -15,6 +15,16 @@ class NetworkManager {
     
     private init() { }
     
+    func getTimeFromTimeZone(from timezone: String, with completion: @escaping(String) -> Void) {
+        let date = Date()
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone(identifier: timezone) ?? TimeZone(identifier: "Europe/Rome")!
+        let hour = calendar.component(.hour, from: date)
+        let minute = calendar.component(.minute, from: date)
+        let second = calendar.component(.second, from: date)
+        completion("\(hour):\(minute):\(second)")
+    }
+    
     func getCitiesWeather(cities: [String], with completion: @escaping([WeatherResponse]) -> Void) {
         var items: [WeatherResponse] = []
         cities.forEach { item in
@@ -26,13 +36,11 @@ class NetworkManager {
     }
     
     private func fetchWeather(cityName: String, with completion: @escaping(WeatherResponse) -> Void) {
-        configureCoordinates(cityName: cityName) { lat, lon in
-            let url = "\(API.weatherURL)&lat=\(lat)&lon=\(lon)"
-            print(url)
-            self.fetchData(from: url) { weather in
-                completion(weather)
-                print(weather)
-            }
+        let url = "\(API.weatherURL)&city=\(cityName)"
+//        print(url)
+        self.fetchData(from: url) { weather in
+            completion(weather)
+            print(weather)
         }
     }
     
@@ -63,20 +71,3 @@ class NetworkManager {
             }
     }
 }
-//    func fetch<T: Codable>(_ list: [String], of: T.Type, with completion: @escaping([T]) -> Void) {
-//        var items: [T] = []
-//        let fetchGroup = DispatchGroup()
-//        list.forEach { (url) in
-//            fetchGroup.enter()
-//            AF.request(url).validate().responseDecodable(of: T.self) { response in
-//                if let value = response.value {
-//                    items.append(value)
-//                }
-//                completion(items)
-//                fetchGroup.leave()
-//            }
-//        }
-//        fetchGroup.notify(queue: .main) {
-//        }
-//    }
-
