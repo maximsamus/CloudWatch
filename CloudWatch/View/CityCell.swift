@@ -15,11 +15,10 @@ class CityCell: UITableViewCell {
     @IBOutlet weak var weatherImage: UIImageView!
     
     
-    func configure(weather: WeatherResponse) {
-//        let time = Date(timeIntervalSince1970: Double(weather.current.dt))
-        timeLabel.text = Date(timeIntervalSince1970: Double(weather.current.dt)).description
-        tempLabel.text = String(weather.current.temp)
-//        weatherImage.image =
+    func configure(weather: Datum) {
+        timeLabel.text = weather.datetime
+        tempLabel.text = weather.tempString
+        cityLabel.text = weather.cityName
     }
     
     override func awakeFromNib() {
