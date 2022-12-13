@@ -58,8 +58,13 @@ class WeatherViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let detailVC = segue.destination as? DetailViewController else { return }
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        guard let weather = citiesWeather?[indexPath.row] else { return }
-        detailVC.weather = weather
+        if isFiltering {
+            let filterWeather = filterCitiesWeather[indexPath.row]
+            detailVC.weather = filterWeather
+        } else {
+            guard let weather = citiesWeather?[indexPath.row] else { return }
+            detailVC.weather = weather
+        }
     }
     
     // MARK: - Table view data source
