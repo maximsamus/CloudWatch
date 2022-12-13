@@ -8,10 +8,19 @@
 import UIKit
 
 class WeatherViewController: UITableViewController {
-    
+   
     @IBOutlet weak var searchBar: UISearchBar!
     
     var citiesWeather: [WeatherResponse]?
+    var filterCitiesWeather: [WeatherResponse]?
+    let searchController = UISearchController(searchResultsController: nil)
+    var searchBarIsEmpty: Bool {
+        guard let text = searchController.searchBar.text else { return false }
+        return text.isEmpty
+    }
+    var isFiltering: Bool {
+        searchController.isActive && !searchBarIsEmpty
+    }
     private let cities = [
         "Warsaw",
         "Bucharest",
@@ -29,6 +38,12 @@ class WeatherViewController: UITableViewController {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "CityCell", bundle: nil), forCellReuseIdentifier: "CityCell")
         view.backgroundColor = .black
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
+        definesPresentationContext = false
+        navigationItem.hidesSearchBarWhenScrolling = false
 //        searchBar.barTintColor = .black
 //        searchBar.searchTextField.textColor = .white
 //        searchBar.delegate = self
@@ -63,7 +78,21 @@ class WeatherViewController: UITableViewController {
 
 // MARK: - Search bar
 
-//extension WeatherViewController: UISearchBarDelegate {
+extension WeatherViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filterText(searchController.searchBar.text ?? "")
+    }
+    
+    private func filterText(_ searchText: String) {
+        guard let weatherData = citiesWeather else { return }
+        filterCitiesWeather = weatherData.filter {
+            guard let data = $0.data.first?.cityName.contains(searchText) else { return }
+//            return data
+        }
+        tableView.reloadData()
+    }
+//    UINavigationBarDelegate
 //    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 //        guard let cityName = searchBar.text else { return }
 //        //        NetworkManager.shared.searchStarships(for: shipName, where: NetworkManager.Link.starships.rawValue) { starships in
@@ -76,7 +105,7 @@ class WeatherViewController: UITableViewController {
 //        searchBar.resignFirstResponder()
 //        tableView.reloadData()
 //    }
-//}
+}
 
 // MARK: - Private Methods
 
