@@ -101,13 +101,12 @@
         <!--Navigation Controller-->
         <scene sceneID="ZlI-Hb-SIx">
             <objects>
-                <navigationController toolbarHidden="NO" id="qac-cc-I9d" sceneMemberID="viewController">
+                <navigationController hidesBarsOnSwipe="YES" id="qac-cc-I9d" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="xL4-3t-IhI">
                         <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EC0-Gh-dQZ">
-                        <rect key="frame" x="0.0" y="769" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
