@@ -37,10 +37,8 @@ class NetworkManager {
     
     private func fetchWeather(cityName: String, with completion: @escaping(WeatherResponse) -> Void) {
         let url = "\(API.weatherURL)&city=\(cityName)"
-//        print(url)
         self.fetchData(from: url) { weather in
             completion(weather)
-            print(weather)
         }
     }
     
