@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 import CoreLocation
 
-class NetworkManager {
+final class NetworkManager {
     
     static let shared = NetworkManager()
     
@@ -35,8 +35,25 @@ class NetworkManager {
         }
     }
     
+//    func getForecast(city: String, with completion: @escaping([WeatherResponse]) -> Void) {
+//        var items: [WeatherResponse] = []
+//        cities.forEach { item in
+//            fetchWeather(cityName: item) { response in
+//                items.append(response)
+//                completion(items)
+//            }
+//        }
+//    }
+    
     private func fetchWeather(cityName: String, with completion: @escaping(WeatherResponse) -> Void) {
         let url = "\(API.weatherURL)&city=\(cityName)"
+        self.fetchData(from: url) { weather in
+            completion(weather)
+        }
+    }
+    
+    func fetchForecast(cityName: String, with completion: @escaping(WeatherResponse) -> Void) {
+        let url = "\(API.forecastHourlyWeatherURL)&city=\(cityName)"
         self.fetchData(from: url) { weather in
             completion(weather)
         }

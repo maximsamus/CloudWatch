@@ -6,7 +6,9 @@
 //
 
 struct API {
-    static let baseURL = "https://api.weatherbit.io/v2.0/current"
     static let key = "7dd3708916684bd383dd005609825f55"
-    static let weatherURL = "\(baseURL)?include=daily&include=hourly&key=\(key)"
+    static let currentWeahterURL = "https://api.weatherbit.io/v2.0/current"
+    static let forecastHourlyURL = "https://api.weatherbit.io/v2.0/forecast/hourly"
+    static let weatherURL = "\(currentWeahterURL)?include=daily&include=hourly&key=\(key)"
+    static let forecastHourlyWeatherURL = "\(forecastHourlyURL)?hours=24&key=\(key)"
 }

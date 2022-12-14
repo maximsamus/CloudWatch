@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CityCell: UITableViewCell {
+final class CityCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var cityViewCell: UIView!
     @IBOutlet weak var cityLabel: UILabel!

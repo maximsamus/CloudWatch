@@ -7,11 +7,11 @@
 
 import UIKit
 
-class WeatherViewController: UITableViewController {
+final class WeatherViewController: UITableViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    let searchController = UISearchController(searchResultsController: nil)
+    private let searchController = UISearchController(searchResultsController: nil)
     var citiesWeather: [WeatherResponse]?
     var filterCitiesWeather = [WeatherResponse]()
     var searchBarIsEmpty: Bool {
