@@ -35,29 +35,35 @@ final class NetworkManager {
         }
     }
     
-//    func getForecast(city: String, with completion: @escaping([WeatherResponse]) -> Void) {
-//        var items: [WeatherResponse] = []
-//        cities.forEach { item in
-//            fetchWeather(cityName: item) { response in
-//                items.append(response)
-//                completion(items)
-//            }
-//        }
-//    }
+    //    func getForecast(city: String, with completion: @escaping([WeatherResponse]) -> Void) {
+    //        var items: [WeatherResponse] = []
+    //        cities.forEach { item in
+    //            fetchWeather(cityName: item) { response in
+    //                items.append(response)
+    //                completion(items)
+    //            }
+    //        }
+    //    }
     
     private func fetchWeather(cityName: String, with completion: @escaping(WeatherResponse) -> Void) {
         let url = "\(API.weatherURL)&city=\(cityName)"
-        self.fetchData(from: url) { weather in
-            completion(weather)
+        //        self.fetch(from: url) { weather in
+        //            completion(weather)
+        self.fetch(from: url) { weatherResponse in
+            completion(weatherResponse)
         }
     }
     
-    func fetchForecast(cityName: String, with completion: @escaping(WeatherResponse) -> Void) {
+    
+    func fetchForecast(cityName: String, with completion: @escaping(ForecastResponse) -> Void) {
         let url = "\(API.forecastHourlyWeatherURL)&city=\(cityName)"
-        self.fetchData(from: url) { weather in
-            completion(weather)
+        //        self.fetchData1(from: url) { weather in
+        //            completion(weather)
+        fetch(from: url) { forecastResponse in
+            completion(forecastResponse)
         }
     }
+    
     
     private func getCoordinates(cityName: String, with completion: @escaping(_ coordinate: CLLocationCoordinate2D?, _ error: Error?) -> Void) {
         CLGeocoder().geocodeAddressString(cityName) { placemark, error in
@@ -77,6 +83,32 @@ final class NetworkManager {
         AF.request(url)
             .validate()
             .responseDecodable(of: WeatherResponse.self) { response in
+                switch response.result {
+                case .success(let responseData):
+                    completion(responseData)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+    }
+    
+    private func fetchData1(from url: String, with completion: @escaping(ForecastResponse) -> Void) {
+        AF.request(url)
+            .validate()
+            .responseDecodable(of: ForecastResponse.self) { response in
+                switch response.result {
+                case .success(let responseData):
+                    completion(responseData)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+    }
+    
+    private func fetch<T: Codable>(from url: String, with completion: @escaping(T) -> Void) {
+        AF.request(url)
+            .validate()
+            .responseDecodable(of: T.self) { response in
                 switch response.result {
                 case .success(let responseData):
                     completion(responseData)

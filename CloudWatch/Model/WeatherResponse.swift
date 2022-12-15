@@ -7,7 +7,21 @@
 
 import Foundation
 
-// MARK: - Empty
+//struct ForecastResponse: Codable {
+////    let cityName, countryCode: String
+//    let data: [Datum]
+////    let lat, lon, stateCode, timezone: String
+////
+////    enum CodingKeys: String, CodingKey {
+////        case cityName = "city_name"
+////        case countryCode = "country_code"
+////        case data, lat, lon
+////        case stateCode = "state_code"
+////        case timezone
+////    }
+//}
+
+// MARK: - WeatherResponse
 struct WeatherResponse: Codable {
     let count: Int
     let data: [Datum]
@@ -31,7 +45,7 @@ struct Datum: Codable {
     //    let lat: Double
     //    let lon: Double
     //        let obTime: String
-    //    let pod: String
+//        let pod: Pod
     //    let precip: Int
     //    let pres: Double
     //    let rh: Int
@@ -97,7 +111,13 @@ struct Datum: Codable {
         //        case windDir = "wind_dir"
         //        case windSpd = "wind_spd"
     }
+//    enum Pod: String, Codable {
+//        case d = "d"
+//        case n = "n"
+//    }
 }
+
+
 
 // MARK: - Weather
 struct Weather: Codable {

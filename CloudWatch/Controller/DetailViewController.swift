@@ -14,20 +14,27 @@ final class DetailViewController: UIViewController {
     @IBOutlet weak var descriptionWeather: UILabel!
     @IBOutlet weak var hourlyCollectionView: UICollectionView!
     
-    var hourlyForecastWeather: WeatherResponse?
+    @IBOutlet weak var backButton: UIBarButtonItem!
+    
+    var hourlyForecastWeather: ForecastResponse?
     var weather: WeatherResponse?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let cellNib = UINib(nibName: "ForecastViewCell", bundle: nil)
-        hourlyCollectionView.register(UINib(nibName: "ForecastViewCell", bundle: nil), forCellWithReuseIdentifier: "Forecast")
-        view.backgroundColor = .blue
+        addForecast()
+//        print(hourlyForecastWeather ?? "00000")
+        setLabels()
+//        hourlyCollectionView.register(ForecastCell.self, forCellWithReuseIdentifier: ForecastCell.identifier)
+        view.backgroundColor = .systemBlue
         hourlyCollectionView.delegate = self
         hourlyCollectionView.dataSource = self
-//            let cell = ForecastViewCell(frame: .zero)
-//        cell.reuseIdentifier = "Forecast"
-        setLabels()
-        addForecast()
+//        UIBarButtonItem.init().tintColor = .white
+//        let button = UIBarButtonItem(barButtonSystemItem: <#T##UIBarButtonItem.SystemItem#>, target: <#T##Any?#>, action: <#T##Selector?#>)
+        backButton.tintColor = .white
+        backButton.tintColor = .systemYellow
+//        addForecast()
+////        print(hourlyForecastWeather ?? "00000")
+//        setLabels()
     }
     
     private func setLabels() {
@@ -36,8 +43,9 @@ final class DetailViewController: UIViewController {
         descriptionWeather.text = weather?.data.first?.weather.weatherDescription
     }
     private func addForecast() {
-        NetworkManager.shared.fetchForecast(cityName: weather?.data.first?.cityName ?? "Warsaw") { weather in
+        NetworkManager.shared.fetchForecast(cityName: "Warsaw") { weather in
             self.hourlyForecastWeather = weather
+//            print(weather)
             DispatchQueue.main.async {
                 self.hourlyCollectionView.reloadData()
             }
@@ -49,13 +57,17 @@ final class DetailViewController: UIViewController {
 // MARK: - Collection View Data Source
 extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        hourlyForecastWeather?.count ?? 1
+        hourlyForecastWeather?.data.count ?? 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Forecast", for: indexPath) as? ForecastViewCell else { return UICollectionViewCell() }
-        guard let hour = hourlyForecastWeather?.data[indexPath.row] else { return ForecastViewCell() }
-        cell.configure(weather: hour)
+
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ForecastCell.identifier, for: indexPath) as? ForecastCell else { return UICollectionViewCell() }
+        cell.textLabel.text = "hello"
+//        guard let city = hourlyForecastWeather else { return ForecastCell() }
+//            print(city)
+//        guard (hourlyForecastWeather?.data.first) != nil else { return ForecastViewCell() }
+//        cell.configure(weather: hour)
         //               // Configure the cell with the item at the current index
         //               cell.label.text = items[indexPath.item]
         return cell

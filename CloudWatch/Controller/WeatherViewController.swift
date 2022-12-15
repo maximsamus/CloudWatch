@@ -47,6 +47,7 @@ final class WeatherViewController: UITableViewController {
         searchController.searchBar.searchTextField.textColor = .white
         dismissKeyboardOnTap()
         addCities()
+//        print(citiesWeather ?? "00")
     }
     
     // MARK: - Navigation
