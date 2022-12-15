@@ -90,10 +90,10 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ForecastCell" id="bNk-UT-cig" customClass="ForecastCell" customModule="CloudWatch" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="70" height="128"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="95" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="70" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="95" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="center" ambiguous="YES" axis="vertical" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="jOq-a9-dVe">
@@ -131,11 +131,11 @@
                                             <constraint firstAttribute="trailingMargin" secondItem="jOq-a9-dVe" secondAttribute="trailing" constant="2" id="uri-qb-vjt"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="jOq-a9-dVe" secondAttribute="bottom" constant="8" id="whw-WZ-uKh"/>
                                         </constraints>
-                                        <size key="customSize" width="70" height="128"/>
+                                        <size key="customSize" width="95" height="128"/>
                                         <connections>
+                                            <outlet property="hourLabel" destination="vIB-1z-Le2" id="IJB-4S-eG8"/>
                                             <outlet property="imageView" destination="u7c-dD-kQk" id="QNh-nf-4Nw"/>
                                             <outlet property="tempLabel" destination="RRt-74-vKl" id="OJc-Bq-dFC"/>
-                                            <outlet property="textLabel" destination="vIB-1z-Le2" id="IJB-4S-eG8"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -164,7 +164,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="backButton" destination="z6B-N4-XcR" id="fYk-yE-hAP"/>
                         <outlet property="cityName" destination="aaT-zA-87h" id="Pnw-R9-bBf"/>
                         <outlet property="descriptionWeather" destination="5Zd-5g-y8R" id="40P-fJ-fIL"/>
                         <outlet property="hourlyCollectionView" destination="euY-RE-PFi" id="mNH-Mq-P98"/>

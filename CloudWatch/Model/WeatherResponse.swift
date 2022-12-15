@@ -59,7 +59,7 @@ struct Datum: Codable {
     //    let sunset: String
     let temp: Double
     var tempString: String {
-        String(format: "%.1f", temp)
+        String(format: "%.0f", temp)
     }
     let timezone: String
     //    let ts: Int

@@ -49,6 +49,9 @@ struct DataResponse: Codable {
     let windCdir, windCdirFull: String
     let windDir: Int
     let windGustSpd, windSpd: Double
+    var tempString: String {
+        String(format: "%.0f", temp)
+    }
 
     enum CodingKeys: String, CodingKey {
         case appTemp = "app_temp"

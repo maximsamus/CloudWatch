@@ -9,8 +9,6 @@ import UIKit
 
 final class WeatherViewController: UITableViewController {
     
-    @IBOutlet weak var searchBar: UISearchBar!
-    
     private let searchController = UISearchController(searchResultsController: nil)
     var citiesWeather: [WeatherResponse]?
     var filterCitiesWeather = [WeatherResponse]()
@@ -47,7 +45,6 @@ final class WeatherViewController: UITableViewController {
         searchController.searchBar.searchTextField.textColor = .white
         dismissKeyboardOnTap()
         addCities()
-//        print(citiesWeather ?? "00")
     }
     
     // MARK: - Navigation
@@ -90,7 +87,6 @@ final class WeatherViewController: UITableViewController {
 }
 
 // MARK: - Search bar
-
 extension WeatherViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -99,15 +95,14 @@ extension WeatherViewController: UISearchResultsUpdating {
     
     private func filterText(_ searchText: String) {
         guard let weatherData = citiesWeather else { return }
-        filterCitiesWeather = weatherData.filter { dataWeahter -> Bool in
-            (dataWeahter.data.first?.cityName.contains(searchText))!
+        filterCitiesWeather = weatherData.filter { dataWeather -> Bool in
+            dataWeather.data.first?.cityName.contains(searchText) ?? (citiesWeather != nil)
         }
         tableView.reloadData()
     }
 }
 
 // MARK: - Private Methods
-
 extension WeatherViewController {
     
     private func addCities() {

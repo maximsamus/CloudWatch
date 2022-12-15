@@ -7,37 +7,26 @@
 
 import UIKit
 
-class ForecastCell: UICollectionViewCell {
+final class ForecastCell: UICollectionViewCell {
     
     static let identifier = "ForecastCell"
     
-    @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var hourLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var tempLabel: UILabel!
-    
-    //    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        contentView.backgroundColor = .systemBlue
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        setup()
-//
-//    }
-//    func configure(weather: Datum) {
-////        let indexCount = weather[index]
-//        tempLabel.text = "\(weather.tempString)°C"
-////        hourLabel.text = "\(indexCount)"
-//        iconImage.image = UIImage(systemName: weather.weather.conditionName)
-//    }
-//    func setup() {
-//        cellView.backgroundColor = .black
-//        print("1111")
-//    }
+
+    func configure(weather: DataResponse) {
+        let dateString = weather.timestampLocal
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        guard let date = dateFormatter.date(from: dateString) else { return }
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.hour], from: date)
+        guard let hour = components.hour else { return }
+
+        tempLabel.text = "\(weather.tempString)°C"
+        hourLabel.text = String(hour)
+        imageView.image = UIImage(systemName: weather.weather.conditionName)
+    }
 }
 
