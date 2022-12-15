@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 // MARK: - ForecastResponse
 struct ForecastResponse: Codable {
     let cityName: String
@@ -78,19 +77,6 @@ enum Pod: String, Codable {
     case d = "d"
     case n = "n"
 }
-
-//// MARK: - Weather
-//struct Weather: Codable {
-//    let icon: Icon
-//    let weatherDescription: Description
-//    let code: Int
-//
-//    enum CodingKeys: String, CodingKey {
-//        case icon
-//        case weatherDescription = "description"
-//        case code
-//    }
-//}
 
 enum Icon: String, Codable {
     case c02D = "c02d"

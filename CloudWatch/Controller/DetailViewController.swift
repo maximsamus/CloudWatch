@@ -42,7 +42,6 @@ final class DetailViewController: UIViewController {
     }
 }
 
-
 // MARK: - Collection View Data Source
 extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -52,7 +51,6 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ForecastCell.identifier, for: indexPath) as? ForecastCell else { return UICollectionViewCell() }
-        cell.hourLabel.text = "hello"
         guard let city = hourlyForecastWeather?.data[indexPath.item] else { return ForecastCell() }
         cell.configure(weather: city)
         return cell

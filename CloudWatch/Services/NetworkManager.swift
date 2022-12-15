@@ -7,7 +7,6 @@
 
 import Foundation
 import Alamofire
-//import CoreLocation
 
 final class NetworkManager {
     
@@ -34,7 +33,7 @@ final class NetworkManager {
             }
         }
     }
-        
+    
     func fetchForecast(cityName: String, with completion: @escaping(ForecastResponse) -> Void) {
         let url = "\(API.forecastHourlyWeatherURL)&city=\(cityName)"
         fetch(from: url) { forecastResponse in
@@ -49,20 +48,6 @@ final class NetworkManager {
         }
     }
     
-//    private func getCoordinates(cityName: String, with completion: @escaping(_ coordinate: CLLocationCoordinate2D?, _ error: Error?) -> Void) {
-//        CLGeocoder().geocodeAddressString(cityName) { placemark, error in
-//            completion(placemark?.first?.location?.coordinate, error)
-//        }
-//    }
-//
-//    private func configureCoordinates(cityName: String, with completion: @escaping(_ lat: Double , _ lon: Double) -> Void) {
-//        getCoordinates(cityName: cityName) { coordinate, error in
-//            guard let lat = coordinate?.latitude else { return }
-//            guard let lon = coordinate?.longitude else { return }
-//            completion(lat, lon)
-//        }
-//    }
-
     private func fetch<T: Codable>(from url: String, with completion: @escaping(T) -> Void) {
         AF.request(url)
             .validate()
