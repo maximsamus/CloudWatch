@@ -7,17 +7,19 @@
 
 import UIKit
 
-final class ForecastViewCell: UICollectionViewCell {
+class ForecastViewCell: UICollectionViewCell {
     
     
     @IBOutlet weak var hourLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var iconImage: UIImageView!
     
+
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 //        let cell = MyCollectionViewCell(frame: .zero)
-        self.reuseIdentifier = "MyCellReuseIdentifier"
+//        self.reuseIdentifier = "MyCellReuseIdentifier"
     }
     func configure(weather: Datum) {
 //        let indexCount = weather[index]

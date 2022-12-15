@@ -24,6 +24,8 @@ final class DetailViewController: UIViewController {
         view.backgroundColor = .blue
         hourlyCollectionView.delegate = self
         hourlyCollectionView.dataSource = self
+//            let cell = ForecastViewCell(frame: .zero)
+//        cell.reuseIdentifier = "Forecast"
         setLabels()
         addForecast()
     }
