@@ -120,7 +120,7 @@
                                                 </connections>
                                             </collectionView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="NdQ-21-sA9">
-                                                <rect key="frame" x="0.0" y="528.66666666666663" width="393" height="243"/>
+                                                <rect key="frame" x="0.0" y="562" width="393" height="176"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pressure" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="192-cp-6aq">
                                                         <rect key="frame" x="0.0" y="0.0" width="393" height="42"/>
@@ -136,12 +136,6 @@
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="humidity" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTG-lY-hHs">
                                                         <rect key="frame" x="0.0" y="134" width="393" height="42"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Solar rad" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="11K-1J-nyv">
-                                                        <rect key="frame" x="0.0" y="201" width="393" height="42"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -190,7 +184,6 @@
                         <outlet property="humidity" destination="MTG-lY-hHs" id="R1I-Wj-KZg"/>
                         <outlet property="pressure" destination="192-cp-6aq" id="l7o-cj-v1u"/>
                         <outlet property="scrollView" destination="StH-4R-I3A" id="Ck9-Ly-lQX"/>
-                        <outlet property="solarRad" destination="11K-1J-nyv" id="NaI-lj-xXs"/>
                         <outlet property="windSpeed" destination="AO3-9p-ZhJ" id="5X5-2M-8C1"/>
                     </connections>
                 </viewController>

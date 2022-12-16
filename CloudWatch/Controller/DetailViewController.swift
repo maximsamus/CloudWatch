@@ -13,7 +13,6 @@ final class DetailViewController: UIViewController {
     @IBOutlet weak var pressure: UILabel!
     @IBOutlet weak var windSpeed: UILabel!
     @IBOutlet weak var humidity: UILabel!
-    @IBOutlet weak var solarRad: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     
     private let headerView = HeaderView()
@@ -99,7 +98,6 @@ extension DetailViewController {
         pressure.text = "Average pressure is \(weather?.data.first?.pres.rounded() ?? 0.0) mb."
         windSpeed.text = "Average wind speed is \(weather?.data.first?.windSpd.rounded() ?? 0.0) m/s."
         humidity.text = "Average relative humidity is \(weather?.data.first?.rh ?? 0) %."
-        solarRad.text = "Average solar radiation is \(weather?.data.first?.solarRAD ?? 0) W/M^2."
     }
     
     private func addForecast() {

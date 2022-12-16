@@ -19,7 +19,6 @@ struct Datum: Codable {
     let pres: Double
     let windSpd: Double
     let rh: Int
-    let solarRAD: Int
     let temp: Double
     let timezone: String
     let weather: Weather
@@ -32,7 +31,6 @@ struct Datum: Codable {
         case pres
         case windSpd = "wind_spd"
         case rh
-        case solarRAD = "solar_rad"
         case temp
         case weather
         case timezone

@@ -32,6 +32,8 @@ extension HeaderView {
         weatherLabel.textAlignment = .center
         weatherLabel.lineBreakMode = .byWordWrapping
         weatherLabel.numberOfLines = 0
+        weatherLabel.preferredMaxLayoutWidth = 200
+        weatherLabel.sizeToFit()
     }
     
     func layout() {
