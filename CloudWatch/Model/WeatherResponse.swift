@@ -64,10 +64,10 @@ struct Weather: Codable {
             return "cloud"
         }
     }
+    
     enum CodingKeys: String, CodingKey {
         case weatherDescription = "description"
         case code
         case icon
     }
 }
-

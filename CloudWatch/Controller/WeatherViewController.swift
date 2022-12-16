@@ -10,13 +10,13 @@ import UIKit
 final class WeatherViewController: UITableViewController {
     
     private let searchController = UISearchController(searchResultsController: nil)
-    var citiesWeather: [WeatherResponse]?
-    var filterCitiesWeather = [WeatherResponse]()
-    var searchBarIsEmpty: Bool {
+    private var citiesWeather: [WeatherResponse]?
+    private var filterCitiesWeather = [WeatherResponse]()
+    private var searchBarIsEmpty: Bool {
         guard let text = searchController.searchBar.text else { return false }
         return text.isEmpty
     }
-    var isFiltering: Bool {
+    private var isFiltering: Bool {
         searchController.isActive && !searchBarIsEmpty
     }
     private let cities = [

@@ -21,6 +21,7 @@
 		F7C159B52948F0050078350B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C159B42948F0050078350B /* DetailViewController.swift */; };
 		F7C159BB294B66750078350B /* ForecastResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C159BA294B66750078350B /* ForecastResponse.swift */; };
 		F7C159BD294BA8C70078350B /* ForecastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C159BC294BA8C70078350B /* ForecastCell.swift */; };
+		F7C159BF294C0A6C0078350B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C159BE294C0A6C0078350B /* HeaderView.swift */; };
 		F7E8AB5D29426F63004B3E61 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E8AB5C29426F63004B3E61 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		F7C159B42948F0050078350B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		F7C159BA294B66750078350B /* ForecastResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastResponse.swift; sourceTree = "<group>"; };
 		F7C159BC294BA8C70078350B /* ForecastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCell.swift; sourceTree = "<group>"; };
+		F7C159BE294C0A6C0078350B /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		F7E8AB5C29426F63004B3E61 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +110,7 @@
 			children = (
 				F7C05CC62942351C002BBFBB /* WeatherViewController.swift */,
 				F7C159B42948F0050078350B /* DetailViewController.swift */,
+				F7C159BE294C0A6C0078350B /* HeaderView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				F7C05CC72942351C002BBFBB /* WeatherViewController.swift in Sources */,
 				F7C05CAD29422B52002BBFBB /* SceneDelegate.swift in Sources */,
 				F7A06D812943AF36005CA48C /* CityCell.swift in Sources */,
+				F7C159BF294C0A6C0078350B /* HeaderView.swift in Sources */,
 				F7C159A92944EFF50078350B /* API.swift in Sources */,
 				F7C159B3294754E60078350B /* WeatherResponse.swift in Sources */,
 				F7C159B52948F0050078350B /* DetailViewController.swift in Sources */,

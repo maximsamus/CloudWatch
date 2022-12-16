@@ -50,23 +50,23 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3nn-iA-2AZ">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="1300"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="6yE-yr-GCC">
-                                                <rect key="frame" x="16" y="19.999999999999986" width="361" height="225.66666666666663"/>
+                                            <stackView contentMode="scaleToFill" axis="vertical" spacing="14" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6yE-yr-GCC">
+                                                <rect key="frame" x="16" y="20" width="361" height="79.666666666666671"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cityName" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaT-zA-87h">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cityName" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="23" translatesAutoresizingMaskIntoConstraints="NO" id="aaT-zA-87h">
                                                         <rect key="frame" x="0.0" y="0.0" width="361" height="54"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="temp" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eP0-7D-GiE">
-                                                        <rect key="frame" x="0.0" y="68" width="361" height="101.66666666666669"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="temp" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="43" translatesAutoresizingMaskIntoConstraints="NO" id="eP0-7D-GiE">
+                                                        <rect key="frame" x="0.0" y="-24" width="361" height="101.66666666666667"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="85"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Zd-5g-y8R">
-                                                        <rect key="frame" x="0.0" y="183.66666666666666" width="361" height="42"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5Zd-5g-y8R">
+                                                        <rect key="frame" x="0.0" y="37.666666666666657" width="361" height="42"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -225,6 +225,7 @@
                         <outlet property="hourlyCollectionView" destination="euY-RE-PFi" id="mNH-Mq-P98"/>
                         <outlet property="humidity" destination="MTG-lY-hHs" id="R1I-Wj-KZg"/>
                         <outlet property="pressure" destination="192-cp-6aq" id="l7o-cj-v1u"/>
+                        <outlet property="scrollView" destination="StH-4R-I3A" id="Ck9-Ly-lQX"/>
                         <outlet property="solarRad" destination="11K-1J-nyv" id="NaI-lj-xXs"/>
                         <outlet property="temp" destination="eP0-7D-GiE" id="dZe-oQ-wgP"/>
                         <outlet property="windSpeed" destination="AO3-9p-ZhJ" id="5X5-2M-8C1"/>
