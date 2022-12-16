@@ -9,9 +9,6 @@ import UIKit
 
 final class DetailViewController: UIViewController {
     
-//    @IBOutlet weak var cityName: UILabel!
-//    @IBOutlet weak var temp: UILabel!
-//    @IBOutlet weak var descriptionWeather: UILabel!
     @IBOutlet weak var hourlyCollectionView: UICollectionView!
     @IBOutlet weak var pressure: UILabel!
     @IBOutlet weak var windSpeed: UILabel!
@@ -26,38 +23,11 @@ final class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBlue
-        hourlyCollectionView.delegate = self
-        hourlyCollectionView.dataSource = self
-        self.scrollView.delegate = self
         addForecast()
         setLabels()
         style()
         layout()
-    }
-
-    private func setLabels() {
-        headerView.weatherLabel.text = """
-                                      \(weather?.data.first?.cityName ?? "")
-                                      \(weather?.data.first?.tempString ?? "")°C
-                                      \(weather?.data.first?.weather.weatherDescription ?? "")
-                                      """
-//        cityName.text = weather?.data.first?.cityName
-//        temp.text = "\(weather?.data.first?.tempString ?? "")°C"
-//        descriptionWeather.text = weather?.data.first?.weather.weatherDescription
-        pressure.text = "Average pressure is \(weather?.data.first?.pres.rounded() ?? 0.0) mb."
-        windSpeed.text = "Average wind speed is \(weather?.data.first?.windSpd.rounded() ?? 0.0) m/s."
-        humidity.text = "Average relative humidity is \(weather?.data.first?.rh ?? 0) %."
-        solarRad.text = "Average solar radiation is \(weather?.data.first?.solarRAD ?? 0) W/M^2."
-    }
-    
-    private func addForecast() {
-        NetworkManager.shared.fetchForecast(cityName: "Warsaw") { weather in
-            self.hourlyForecastWeather = weather
-            DispatchQueue.main.async {
-                self.hourlyCollectionView.reloadData()
-            }
-        }
+        setUp()
     }
 }
 
@@ -95,7 +65,9 @@ extension DetailViewController: UIScrollViewDelegate {
     }
 }
 
+// MARK: - Private Methods
 extension DetailViewController {
+    
     private func style() {
         headerView.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -109,5 +81,33 @@ extension DetailViewController {
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
+    }
+    
+    private func setUp() {
+        view.backgroundColor = .systemBlue
+        hourlyCollectionView.delegate = self
+        hourlyCollectionView.dataSource = self
+        self.scrollView.delegate = self
+    }
+    
+    private func setLabels() {
+        headerView.weatherLabel.text = """
+                                      \(weather?.data.first?.cityName ?? "")
+                                      \(weather?.data.first?.tempString ?? "")°C
+                                      \(weather?.data.first?.weather.weatherDescription ?? "")
+                                      """
+        pressure.text = "Average pressure is \(weather?.data.first?.pres.rounded() ?? 0.0) mb."
+        windSpeed.text = "Average wind speed is \(weather?.data.first?.windSpd.rounded() ?? 0.0) m/s."
+        humidity.text = "Average relative humidity is \(weather?.data.first?.rh ?? 0) %."
+        solarRad.text = "Average solar radiation is \(weather?.data.first?.solarRAD ?? 0) W/M^2."
+    }
+    
+    private func addForecast() {
+        NetworkManager.shared.fetchForecast(cityName: "Warsaw") { weather in
+            self.hourlyForecastWeather = weather
+            DispatchQueue.main.async {
+                self.hourlyCollectionView.reloadData()
+            }
+        }
     }
 }

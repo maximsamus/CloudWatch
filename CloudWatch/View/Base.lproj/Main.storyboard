@@ -50,37 +50,6 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3nn-iA-2AZ">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="1300"/>
                                         <subviews>
-                                            <stackView contentMode="scaleToFill" axis="vertical" spacing="14" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6yE-yr-GCC">
-                                                <rect key="frame" x="16" y="20" width="361" height="79.666666666666671"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cityName" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="23" translatesAutoresizingMaskIntoConstraints="NO" id="aaT-zA-87h">
-                                                        <rect key="frame" x="0.0" y="0.0" width="361" height="54"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="45"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="temp" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="43" translatesAutoresizingMaskIntoConstraints="NO" id="eP0-7D-GiE">
-                                                        <rect key="frame" x="0.0" y="-24" width="361" height="101.66666666666667"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="85"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5Zd-5g-y8R">
-                                                        <rect key="frame" x="0.0" y="37.666666666666657" width="361" height="42"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="5Zd-5g-y8R" secondAttribute="trailing" id="13m-lv-LRq"/>
-                                                    <constraint firstAttribute="trailing" secondItem="aaT-zA-87h" secondAttribute="trailing" id="DET-P3-RsK"/>
-                                                    <constraint firstItem="aaT-zA-87h" firstAttribute="leading" secondItem="6yE-yr-GCC" secondAttribute="leading" id="J3c-Qx-Stz"/>
-                                                    <constraint firstItem="eP0-7D-GiE" firstAttribute="leading" secondItem="6yE-yr-GCC" secondAttribute="leading" id="X3x-Gq-UcW"/>
-                                                    <constraint firstAttribute="trailing" secondItem="eP0-7D-GiE" secondAttribute="trailing" id="lrB-bb-nLj"/>
-                                                    <constraint firstItem="5Zd-5g-y8R" firstAttribute="leading" secondItem="6yE-yr-GCC" secondAttribute="leading" id="oUP-AW-djF"/>
-                                                </constraints>
-                                            </stackView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="euY-RE-PFi">
                                                 <rect key="frame" x="0.0" y="329" width="393" height="128"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -185,11 +154,8 @@
                                             <constraint firstAttribute="trailing" secondItem="NdQ-21-sA9" secondAttribute="trailing" id="15C-MQ-BIG"/>
                                             <constraint firstItem="NdQ-21-sA9" firstAttribute="leading" secondItem="3nn-iA-2AZ" secondAttribute="leading" id="6LE-c5-N28"/>
                                             <constraint firstAttribute="trailing" secondItem="NdQ-21-sA9" secondAttribute="trailing" id="Isz-3W-Tte"/>
-                                            <constraint firstItem="6yE-yr-GCC" firstAttribute="top" secondItem="3nn-iA-2AZ" secondAttribute="top" constant="20" id="NSf-qD-gIj"/>
                                             <constraint firstAttribute="height" constant="1300" id="Tbh-b0-EOP"/>
-                                            <constraint firstItem="6yE-yr-GCC" firstAttribute="leading" secondItem="3nn-iA-2AZ" secondAttribute="leading" constant="16" id="Uqd-US-YA2"/>
                                             <constraint firstItem="NdQ-21-sA9" firstAttribute="centerY" secondItem="3nn-iA-2AZ" secondAttribute="centerY" id="pfn-1Y-TGM"/>
-                                            <constraint firstAttribute="trailing" secondItem="6yE-yr-GCC" secondAttribute="trailing" constant="16" id="tEk-Lb-4FM"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -220,14 +186,11 @@
                     </navigationItem>
                     <size key="freeformSize" width="393" height="1500"/>
                     <connections>
-                        <outlet property="cityName" destination="aaT-zA-87h" id="Pnw-R9-bBf"/>
-                        <outlet property="descriptionWeather" destination="5Zd-5g-y8R" id="40P-fJ-fIL"/>
                         <outlet property="hourlyCollectionView" destination="euY-RE-PFi" id="mNH-Mq-P98"/>
                         <outlet property="humidity" destination="MTG-lY-hHs" id="R1I-Wj-KZg"/>
                         <outlet property="pressure" destination="192-cp-6aq" id="l7o-cj-v1u"/>
                         <outlet property="scrollView" destination="StH-4R-I3A" id="Ck9-Ly-lQX"/>
                         <outlet property="solarRad" destination="11K-1J-nyv" id="NaI-lj-xXs"/>
-                        <outlet property="temp" destination="eP0-7D-GiE" id="dZe-oQ-wgP"/>
                         <outlet property="windSpeed" destination="AO3-9p-ZhJ" id="5X5-2M-8C1"/>
                     </connections>
                 </viewController>

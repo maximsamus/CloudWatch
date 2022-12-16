@@ -16,12 +16,14 @@ class HeaderView: UIView {
         style()
         layout()
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
 extension HeaderView {
+    
     func style() {
         weatherLabel.translatesAutoresizingMaskIntoConstraints = false
         weatherLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)

@@ -34,17 +34,9 @@ final class WeatherViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: "CityCell", bundle: nil), forCellReuseIdentifier: "CityCell")
-        view.backgroundColor = .black
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search"
-        navigationItem.searchController = searchController
-        definesPresentationContext = false
-        navigationItem.hidesSearchBarWhenScrolling = false
-        searchController.searchBar.searchTextField.textColor = .white
         dismissKeyboardOnTap()
         addCities()
+        setUpView()
     }
     
     // MARK: - Navigation
@@ -123,5 +115,17 @@ extension WeatherViewController {
     
     @objc private func hideKeyboard() {
         view.endEditing(true)
+    }
+    
+    private func setUpView() {
+        tableView.register(UINib(nibName: "CityCell", bundle: nil), forCellReuseIdentifier: "CityCell")
+        view.backgroundColor = .black
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
+        definesPresentationContext = false
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.searchBar.searchTextField.textColor = .white
     }
 }
