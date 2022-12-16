@@ -13,6 +13,11 @@ final class DetailViewController: UIViewController {
     @IBOutlet weak var temp: UILabel!
     @IBOutlet weak var descriptionWeather: UILabel!
     @IBOutlet weak var hourlyCollectionView: UICollectionView!
+    @IBOutlet weak var pressure: UILabel!
+    @IBOutlet weak var windSpeed: UILabel!
+    @IBOutlet weak var humidity: UILabel!
+    @IBOutlet weak var solarRad: UILabel!
+    
     
     var hourlyForecastWeather: ForecastResponse?
     var weather: WeatherResponse?
@@ -30,6 +35,10 @@ final class DetailViewController: UIViewController {
         cityName.text = weather?.data.first?.cityName
         temp.text = "\(weather?.data.first?.tempString ?? "")°C"
         descriptionWeather.text = weather?.data.first?.weather.weatherDescription
+        pressure.text = "Average pressure is \(weather?.data.first?.pres.rounded() ?? 0.0) mb."
+        windSpeed.text = "Average wind speed is \(weather?.data.first?.windSpd.rounded() ?? 0.0) m/s."
+        humidity.text = "Average relative humidity is \(weather?.data.first?.rh ?? 0) %."
+        solarRad.text = "Average solar radiation is \(weather?.data.first?.solarRAD ?? 0) W/M^2."
     }
     
     private func addForecast() {

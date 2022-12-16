@@ -148,12 +148,45 @@
                                                     <outlet property="delegate" destination="cmD-yb-VSC" id="ntR-X8-CJN"/>
                                                 </connections>
                                             </collectionView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="NdQ-21-sA9">
+                                                <rect key="frame" x="0.0" y="528.66666666666663" width="393" height="243"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pressure" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="192-cp-6aq">
+                                                        <rect key="frame" x="0.0" y="0.0" width="393" height="42"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="windSpeed" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AO3-9p-ZhJ">
+                                                        <rect key="frame" x="0.0" y="67" width="393" height="42"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="humidity" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTG-lY-hHs">
+                                                        <rect key="frame" x="0.0" y="134" width="393" height="42"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Solar rad" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="11K-1J-nyv">
+                                                        <rect key="frame" x="0.0" y="201" width="393" height="42"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBlueColor"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="NdQ-21-sA9" secondAttribute="trailing" id="15C-MQ-BIG"/>
+                                            <constraint firstItem="NdQ-21-sA9" firstAttribute="leading" secondItem="3nn-iA-2AZ" secondAttribute="leading" id="6LE-c5-N28"/>
+                                            <constraint firstAttribute="trailing" secondItem="NdQ-21-sA9" secondAttribute="trailing" id="Isz-3W-Tte"/>
                                             <constraint firstItem="6yE-yr-GCC" firstAttribute="top" secondItem="3nn-iA-2AZ" secondAttribute="top" constant="20" id="NSf-qD-gIj"/>
                                             <constraint firstAttribute="height" constant="1300" id="Tbh-b0-EOP"/>
                                             <constraint firstItem="6yE-yr-GCC" firstAttribute="leading" secondItem="3nn-iA-2AZ" secondAttribute="leading" constant="16" id="Uqd-US-YA2"/>
+                                            <constraint firstItem="NdQ-21-sA9" firstAttribute="centerY" secondItem="3nn-iA-2AZ" secondAttribute="centerY" id="pfn-1Y-TGM"/>
                                             <constraint firstAttribute="trailing" secondItem="6yE-yr-GCC" secondAttribute="trailing" constant="16" id="tEk-Lb-4FM"/>
                                         </constraints>
                                     </view>
@@ -188,7 +221,11 @@
                         <outlet property="cityName" destination="aaT-zA-87h" id="Pnw-R9-bBf"/>
                         <outlet property="descriptionWeather" destination="5Zd-5g-y8R" id="40P-fJ-fIL"/>
                         <outlet property="hourlyCollectionView" destination="euY-RE-PFi" id="mNH-Mq-P98"/>
+                        <outlet property="humidity" destination="MTG-lY-hHs" id="R1I-Wj-KZg"/>
+                        <outlet property="pressure" destination="192-cp-6aq" id="l7o-cj-v1u"/>
+                        <outlet property="solarRad" destination="11K-1J-nyv" id="NaI-lj-xXs"/>
                         <outlet property="temp" destination="eP0-7D-GiE" id="dZe-oQ-wgP"/>
+                        <outlet property="windSpeed" destination="AO3-9p-ZhJ" id="5X5-2M-8C1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tKY-KI-fuo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

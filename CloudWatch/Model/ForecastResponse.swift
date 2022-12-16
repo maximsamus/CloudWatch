@@ -16,7 +16,7 @@ struct ForecastResponse: Codable {
     let lon: String
     let stateCode: String
     let timezone: String
-
+    
     enum CodingKeys: String, CodingKey {
         case cityName = "city_name"
         case countryCode = "country_code"
@@ -51,7 +51,7 @@ struct DataResponse: Codable {
     var tempString: String {
         String(format: "%.0f", temp)
     }
-
+    
     enum CodingKeys: String, CodingKey {
         case appTemp = "app_temp"
         case clouds
