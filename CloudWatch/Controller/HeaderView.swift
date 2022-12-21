@@ -28,7 +28,7 @@ extension HeaderView {
     func style() {
         weatherLabel.translatesAutoresizingMaskIntoConstraints = false
         weatherLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
-        weatherLabel.font = .systemFont(ofSize: 45)
+        weatherLabel.font = .systemFont(ofSize: 50)
         weatherLabel.textColor = .white
         weatherLabel.textAlignment = .center
         weatherLabel.lineBreakMode =  .byClipping
@@ -53,11 +53,11 @@ extension HeaderView {
         guard let heightConstraint = heightConstraint else { return }
         let normalizedScroll = y / 2
         heightConstraint.constant = 300 - normalizedScroll
-        if heightConstraint.constant <= 150 {
-            heightConstraint.constant = 150
+        if heightConstraint.constant <= 200 {
+            heightConstraint.constant = 200
         }
-        let maxFontSize: CGFloat = 45
-        let minFontSize: CGFloat = 20
+        let maxFontSize: CGFloat = 50
+        let minFontSize: CGFloat = 25
         let maxScrollPosition = scrollView.contentSize.height - scrollView.frame.size.height
         let fontSize = maxFontSize - (maxFontSize - minFontSize) * (y / maxScrollPosition)
         weatherLabel.font = weatherLabel.font.withSize(fontSize)

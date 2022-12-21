@@ -14,7 +14,7 @@ final class DetailViewController: UIViewController {
     @IBOutlet weak var windSpeed: UILabel!
     @IBOutlet weak var humidity: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
-    
+
     private let headerView = HeaderView()
     private var headerViewTopConstraint: NSLayoutConstraint?
     private var hourlyForecastWeather: ForecastResponse?
@@ -87,8 +87,7 @@ extension DetailViewController {
     private func setLabels() {
         headerView.weatherLabel.text = """
                                       \(weather?.data.first?.cityName ?? "")
-                                      \(weather?.data.first?.tempString ?? "")°C
-                                      \(weather?.data.first?.weather.weatherDescription ?? "")
+                                      \(weather?.data.first?.tempString ?? "")°C \(weather?.data.first?.weather.weatherDescription ?? "")
                                       """
         pressure.text = "Average pressure is \(weather?.data.first?.pres.rounded() ?? 0.0) mb."
         windSpeed.text = "Average wind speed is \(weather?.data.first?.windSpd.rounded() ?? 0.0) m/s."
