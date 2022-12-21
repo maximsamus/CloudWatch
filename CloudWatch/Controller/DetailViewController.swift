@@ -49,18 +49,7 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
 extension DetailViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let y = scrollView.contentOffset.y
-        let swipeDown = y <= 0
-        let snap = y > 30
-        let labelHight = headerView.weatherLabel.frame.height + 16
-        
-        UIView.animate(withDuration: 0.3) {
-            self.headerView.weatherLabel.alpha = swipeDown ? 1.0 : 0.0
-        }
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0) {
-            self.headerViewTopConstraint?.constant = snap ? -labelHight : 0
-            self.view.layoutIfNeeded()
-        }
+        headerView.scrollViewDidScroll(scrollView)
     }
 }
 
@@ -69,6 +58,12 @@ extension DetailViewController {
     
     private func style() {
         headerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        headerView.weatherLabel.topAnchor.constraint(equalTo: headerView.topAnchor).isActive = true
+        headerView.weatherLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor).isActive = true
+        headerView.weatherLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor).isActive = true
+        headerView.weatherLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor).isActive = true
+        
     }
     
     private func layout() {

@@ -7,9 +7,10 @@
 
 import UIKit
 
-class HeaderView: UIView {
+final class HeaderView: UIView {
     
     let weatherLabel = UILabel()
+    var heightConstraint: NSLayoutConstraint?
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -30,19 +31,35 @@ extension HeaderView {
         weatherLabel.font = .systemFont(ofSize: 45)
         weatherLabel.textColor = .white
         weatherLabel.textAlignment = .center
-        weatherLabel.lineBreakMode = .byWordWrapping
+        weatherLabel.lineBreakMode =  .byClipping
         weatherLabel.numberOfLines = 0
-        weatherLabel.preferredMaxLayoutWidth = 200
-        weatherLabel.sizeToFit()
     }
     
     func layout() {
         addSubview(weatherLabel)
         
+        heightConstraint = weatherLabel.heightAnchor.constraint(equalToConstant: 300)
+        
         NSLayoutConstraint.activate([
             weatherLabel.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1),
             weatherLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1),
-            trailingAnchor.constraint(equalToSystemSpacingAfter: weatherLabel.trailingAnchor, multiplier: 1)
+            trailingAnchor.constraint(equalToSystemSpacingAfter: weatherLabel.trailingAnchor, multiplier: 1),
+            heightConstraint!
         ])
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let y = scrollView.contentOffset.y
+        guard let heightConstraint = heightConstraint else { return }
+        let normalizedScroll = y / 2
+        heightConstraint.constant = 300 - normalizedScroll
+        if heightConstraint.constant <= 150 {
+            heightConstraint.constant = 150
+        }
+        let maxFontSize: CGFloat = 45
+        let minFontSize: CGFloat = 20
+        let maxScrollPosition = scrollView.contentSize.height - scrollView.frame.size.height
+        let fontSize = maxFontSize - (maxFontSize - minFontSize) * (y / maxScrollPosition)
+        weatherLabel.font = weatherLabel.font.withSize(fontSize)
     }
 }

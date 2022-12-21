@@ -55,8 +55,8 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="IOt-vB-4mB" firstAttribute="leading" secondItem="7Ol-Lj-ydJ" secondAttribute="leading" id="1M0-vz-tRc"/>
-                            <constraint firstAttribute="trailing" secondItem="IOt-vB-4mB" secondAttribute="trailing" id="919-pD-5dJ"/>
-                            <constraint firstAttribute="bottom" secondItem="IOt-vB-4mB" secondAttribute="bottom" id="Tvu-B2-Ajf"/>
+                            <constraint firstAttribute="trailing" secondItem="IOt-vB-4mB" secondAttribute="trailing" priority="999" id="919-pD-5dJ"/>
+                            <constraint firstAttribute="bottom" secondItem="IOt-vB-4mB" secondAttribute="bottom" priority="999" id="Tvu-B2-Ajf"/>
                             <constraint firstItem="IOt-vB-4mB" firstAttribute="top" secondItem="7Ol-Lj-ydJ" secondAttribute="top" id="yFF-ER-uH8"/>
                         </constraints>
                     </view>
