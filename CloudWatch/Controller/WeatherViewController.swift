@@ -56,8 +56,11 @@ final class WeatherViewController: UITableViewController {
             detailVC.weather = weather
         }
     }
+}
+
+// MARK: - Table view data source
+extension WeatherViewController {
     
-    // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering {
             return filterCitiesWeather.count

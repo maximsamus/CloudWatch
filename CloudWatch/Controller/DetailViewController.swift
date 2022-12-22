@@ -30,7 +30,7 @@ final class DetailViewController: UIViewController {
     }
 }
 
-// MARK: - Collection View Data Source
+// MARK: - Collection View Data Source, Collection View Delegate
 extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -45,7 +45,7 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
 }
 
-// MARK: - Table view delegate
+// MARK: - Scroll view delegate
 extension DetailViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -58,19 +58,20 @@ extension DetailViewController {
     
     private func style() {
         headerView.translatesAutoresizingMaskIntoConstraints = false
-        
+        navigationController?.navigationBar.barTintColor = .systemBlue
+        UINavigationBar.appearance().barTintColor = .systemBlue
+        headerView.backgroundColor = .systemBlue
         headerView.weatherLabel.topAnchor.constraint(equalTo: headerView.topAnchor).isActive = true
         headerView.weatherLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor).isActive = true
         headerView.weatherLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor).isActive = true
         headerView.weatherLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor).isActive = true
-        
+
     }
     
     private func layout() {
         scrollView.addSubview(headerView)
         scrollView.contentInset = UIEdgeInsets(top: headerView.frame.height, left: 0, bottom: 0, right: 0)
         scrollView.scrollIndicatorInsets = UIEdgeInsets(top: headerView.frame.height, left: 0, bottom: 0, right: 0)
-        headerView.backgroundColor = .systemBlue
         headerViewTopConstraint = headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
         
         NSLayoutConstraint.activate([

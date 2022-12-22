@@ -37,8 +37,7 @@ extension HeaderView {
     
     func layout() {
         addSubview(weatherLabel)
-        
-        heightConstraint = weatherLabel.heightAnchor.constraint(equalToConstant: 300)
+        heightConstraint = weatherLabel.heightAnchor.constraint(equalToConstant: 250)
         
         NSLayoutConstraint.activate([
             weatherLabel.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1),
@@ -52,7 +51,7 @@ extension HeaderView {
         let y = scrollView.contentOffset.y
         guard let heightConstraint = heightConstraint else { return }
         let normalizedScroll = y / 2
-        heightConstraint.constant = 300 - normalizedScroll
+        heightConstraint.constant = 250 - normalizedScroll
         if heightConstraint.constant <= 200 {
             heightConstraint.constant = 200
         }
