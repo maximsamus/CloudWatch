@@ -67,7 +67,10 @@ extension DetailViewController {
     }
     
     private func layout() {
-        view.addSubview(headerView)
+        scrollView.addSubview(headerView)
+        scrollView.contentInset = UIEdgeInsets(top: headerView.frame.height, left: 0, bottom: 0, right: 0)
+        scrollView.scrollIndicatorInsets = UIEdgeInsets(top: headerView.frame.height, left: 0, bottom: 0, right: 0)
+        headerView.backgroundColor = .systemBlue
         headerViewTopConstraint = headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
         
         NSLayoutConstraint.activate([
