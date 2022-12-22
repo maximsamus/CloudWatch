@@ -61,10 +61,6 @@ extension DetailViewController {
         navigationController?.navigationBar.barTintColor = .systemBlue
         UINavigationBar.appearance().barTintColor = .systemBlue
         headerView.backgroundColor = .systemBlue
-        headerView.weatherLabel.topAnchor.constraint(equalTo: headerView.topAnchor).isActive = true
-        headerView.weatherLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor).isActive = true
-        headerView.weatherLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor).isActive = true
-        headerView.weatherLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor).isActive = true
     }
     
     private func layout() {
@@ -72,6 +68,11 @@ extension DetailViewController {
         scrollView.contentInset = UIEdgeInsets(top: headerView.frame.height, left: 0, bottom: 0, right: 0)
         scrollView.scrollIndicatorInsets = UIEdgeInsets(top: headerView.frame.height, left: 0, bottom: 0, right: 0)
         headerViewTopConstraint = headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+        headerView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        headerView.weatherLabel.topAnchor.constraint(equalTo: headerView.topAnchor).isActive = true
+        headerView.weatherLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor).isActive = true
+        headerView.weatherLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor).isActive = true
+        headerView.weatherLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor).isActive = true
         
         NSLayoutConstraint.activate([
             headerViewTopConstraint!,
