@@ -130,5 +130,7 @@ extension WeatherViewController {
         definesPresentationContext = false
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchBar.searchTextField.textColor = .white
+        self.navigationController?.navigationBar.barTintColor = .black
+        UINavigationBar.appearance().barTintColor = .black
     }
 }

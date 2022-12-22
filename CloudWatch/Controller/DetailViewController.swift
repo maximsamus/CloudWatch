@@ -58,7 +58,7 @@ extension DetailViewController {
     
     private func style() {
         headerView.translatesAutoresizingMaskIntoConstraints = false
-        navigationController?.navigationBar.barTintColor = .systemBlue
+        self.navigationController?.navigationBar.barTintColor = .systemBlue
         UINavigationBar.appearance().barTintColor = .systemBlue
         headerView.backgroundColor = .systemBlue
     }
