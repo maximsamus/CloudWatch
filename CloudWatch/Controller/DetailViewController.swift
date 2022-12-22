@@ -65,7 +65,6 @@ extension DetailViewController {
         headerView.weatherLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor).isActive = true
         headerView.weatherLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor).isActive = true
         headerView.weatherLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor).isActive = true
-
     }
     
     private func layout() {

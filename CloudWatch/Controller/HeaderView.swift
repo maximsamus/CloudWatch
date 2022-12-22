@@ -38,7 +38,6 @@ extension HeaderView {
     func layout() {
         addSubview(weatherLabel)
         heightConstraint = weatherLabel.heightAnchor.constraint(equalToConstant: 250)
-        
         NSLayoutConstraint.activate([
             weatherLabel.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1),
             weatherLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1),

@@ -48,7 +48,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="1466"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3nn-iA-2AZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1300"/>
+                                        <rect key="frame" x="0.0" y="95" width="393" height="1300"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="euY-RE-PFi">
                                                 <rect key="frame" x="0.0" y="329" width="393" height="128"/>
@@ -154,7 +154,7 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="3nn-iA-2AZ" firstAttribute="top" secondItem="StH-4R-I3A" secondAttribute="top" id="E27-Z0-e7h"/>
+                                    <constraint firstItem="3nn-iA-2AZ" firstAttribute="top" secondItem="StH-4R-I3A" secondAttribute="top" constant="95" id="E27-Z0-e7h"/>
                                     <constraint firstItem="3nn-iA-2AZ" firstAttribute="leading" secondItem="StH-4R-I3A" secondAttribute="leading" id="IlN-Kl-4Xc"/>
                                     <constraint firstAttribute="bottom" secondItem="3nn-iA-2AZ" secondAttribute="bottom" id="J57-CF-PEi"/>
                                     <constraint firstItem="3nn-iA-2AZ" firstAttribute="trailing" secondItem="StH-4R-I3A" secondAttribute="trailing" id="xb2-Hm-DGB"/>
